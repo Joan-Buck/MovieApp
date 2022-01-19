@@ -4,8 +4,7 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const bcrypt = require('bcryptjs');
 const db = require('../db/models');
 const router = express.Router();
-
-
+const { signInUser, signOutUser } = require('../auth');
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -96,7 +95,7 @@ router.post('/signup', csrfProtection, signupValidator, asyncHandler(async(req, 
     const hashedPassword = await bcrypt.hash(password, 12);
     user.hashedPassword = hashedPassword;
     await user.save();
-    // eventually log in uesr
+    signInUser(req, res, user);
     res.redirect('/');
   } else {
     const errors = validatorErrors.array().map((error) => error.msg)
@@ -139,7 +138,7 @@ router.post('/signin', csrfProtection, signinValidator, asyncHandler(async(req, 
       if (user !== null) {
         const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
         if (passwordMatch) {
-          // add sign in function
+          signInUser(req, res, user)
           return res.redirect('/')
         }
       }
@@ -154,6 +153,23 @@ router.post('/signin', csrfProtection, signinValidator, asyncHandler(async(req, 
     })
   }
 }));
+
+router.get('/signout', (req, res) => {
+  signOutUser(req, res);
+  res.redirect('/users/signin');
+});
+
+router.get('/signin/demo', asyncHandler(async(req, res, next) => {
+  try {
+    const user = await db.User.findOne({ where: { email: 'demo@demo.com' } });
+    signInUser(req, res, user);
+    res.redirect('/');
+  }
+  catch (error) {
+    next(error);
+    res.redirect('/');
+  }
+}))
 
 
 module.exports = router;
