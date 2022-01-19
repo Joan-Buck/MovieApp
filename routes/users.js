@@ -30,7 +30,7 @@ router.get('/signup', csrfProtection, (req, res) => {
 const signupValidator = [
   check('username')
     .exists({ checkFalsy: true })
-    .withMessage('Please enter a username')
+    .withMessage('Please enter a username.')
     .isLength({ max: 50 })
     .withMessage('Username cannot exceed 50 characters.')
     .custom((value) => {
@@ -47,7 +47,7 @@ const signupValidator = [
     }),
   check('email')
     .exists({ checkFalsy: true })
-    .withMessage('Please enter an email')
+    .withMessage('Please enter an email.')
     .isLength({ max: 50 })
     .withMessage('Email cannot exceed 50 characters.')
     .matches(/^[a-zA-Z0-9-_]*@[a-z]*\.[a-z]{2,3}$/, 'g')
@@ -66,11 +66,11 @@ const signupValidator = [
     }),
   check('password')
     .exists({ checkFalsy: true })
-    .withMessage('Please enter a password')
+    .withMessage('Please enter a password.')
     .isLength({ max: 50 })
     .withMessage('Password cannot exceed 50 characters.')
     .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, 'g')
-    .withMessage('Password must contain at least 1 lowercase letter, uppercase letter, number, and special character (i.e. "!@#$%^&*")'),
+    .withMessage('Password must contain at least 1 lowercase letter, uppercase letter, number, and special character (i.e. "!@#$%^&*").'),
 
   check('confirmPassword')
     .exists({ checkFalsy: true })
@@ -114,7 +114,46 @@ router.get('/signin', csrfProtection, (req, res) => {
     title: 'Sign In',
     csrfToken: req.csrfToken()
   })
-})
+});
+
+const signinValidator = [
+  check('email')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a value for Email.'),
+  check('password')
+    .exists( {checkFalsy: true})
+    .withMessage('Please provide a value for Password.')
+];
+
+router.post('/signin', csrfProtection, signinValidator, asyncHandler(async(req, res) => {
+  const { email, password } = req.body;
+
+  let errors = [];
+
+  const validatorErrors = validationResult(req);
+
+  if (validatorErrors.isEmpty()) {
+
+    const user = await db.User.findOne( {where: { email } })
+
+      if (user !== null) {
+        const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
+        if (passwordMatch) {
+          // add sign in function
+          return res.redirect('/')
+        }
+      }
+      errors.push('Signin failed for the provided email address and password.')
+  } else {
+    const errors = validatorErrors.array().map((error) => error.msg);
+    res.render('signin', {
+      title: 'Sign In',
+      email,
+      errors,
+      csrfToken: req.csrfToken()
+    })
+  }
+}));
 
 
 module.exports = router;
