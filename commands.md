@@ -98,4 +98,4 @@ Run migration
 Create seed for ratings model
     - npx sequelize seed:generate --name ratingSeeds
     - add seed data
-    - npx dotenv db:seed:all
+    - npx dotenv sequelize db:seed:all
