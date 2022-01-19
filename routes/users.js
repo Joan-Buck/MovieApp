@@ -13,9 +13,17 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/signup', csrfProtection, (req, res) => {
+  const { username, email, password } = req.body;
+
+  const user = db.User.build({
+    username,
+    email
+  });
+
   res.render('signup', {
     csrfToken: req.csrfToken(),
-    title: 'Sign Up'
+    title: 'Sign Up',
+    user
   })
 });
 
@@ -100,6 +108,13 @@ router.post('/signup', csrfProtection, signupValidator, asyncHandler(async(req, 
     })
   }
 }))
+
+router.get('/signin', csrfProtection, (req, res) => {
+  res.render('signin', {
+    title: 'Sign In',
+    csrfToken: req.csrfToken()
+  })
+})
 
 
 module.exports = router;
