@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   Movie.associate = function(models) {
     // associations can be defined here
     Movie.belongsTo(models.Genre, {foreignKey: 'genreId'});
-    Movie.belongsToMany(models.MyList, {through: 'MovieList', otherKey: 'myListId', foreignKey: 'movieId'})
+    Movie.belongsToMany(models.MyList, {through: 'MovieList', otherKey: 'myListId', foreignKey: 'movieId'});
     Movie.hasMany(models.Rating, {foreignKey: 'movieId'});
     Movie.hasMany(models.Review, {foreignKey: 'movieId'})
   };
