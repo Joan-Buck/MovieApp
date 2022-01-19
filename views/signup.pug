@@ -7,14 +7,14 @@ block content
             each error in errors
                 li=  error
     form(action="/users/signup", method="post" )
-        input(type="hidden", name="_csrf" value=csrfToken)
+        input(type="hidden" name="_csrf" value=csrfToken)
         label(for="username") Username:
-        input(type="text", name="username")
+        input(type="text" name="username" value=user.username)
         label(for="email") Email:
-        input(type="email", name="email")
+        input(type="email" name="email" value=user.email)
         label(for="password") Password:
-        input(type="text", name="password")
+        input(type="text" name="password")
         label(for="confirmPassword") Confirm Password:
-        input(type="text", name="confirmPassword")
+        input(type="text" name="confirmPassword")
         button(type="submit") Sign Up
-    a(href="/users/login") Already have an account?
+        a(href="/users/login") Already have an account?
