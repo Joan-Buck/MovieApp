@@ -43,8 +43,19 @@ router.post('/:movieId/addReview', asyncHandler(async(req, res) => {
         movieId: req.params.movieId,
         userId: req.session.auth.userId
     })
-    res.json({ message: 'Success', username: user.username });
+    res.json({ message: 'Success', username: user.username, review: newReview.id });
 }));
+
+router.delete('/reviews/:reviewId/delete', asyncHandler(async(req, res) => {
+    const deleteReview = await db.Review.findByPk(req.params.reviewId);
+
+    if (deleteReview) {
+        await deleteReview.destroy();
+        res.json({ message: 'Success', review: req.params.reviewId })
+    } else {
+        res.json({ message: 'Failed' })
+    }
+}))
 
 
 module.exports = router;
