@@ -7,5 +7,10 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  h1= title
-  p Welcome to your Project Skeleton
+  h1= Movies
+  p Welcome to your Movie App!
+  div.moviesDiv
+    each movie in movies
+      div.movieCard
+        img(src= movie.imageLink)
+        p= movie.title
