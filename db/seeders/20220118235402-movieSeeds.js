@@ -268,7 +268,7 @@ module.exports = {
     {
         title: "Saw",
         plot: "Two strangers awaken in a room with no recollection of how they got there, and soon discover they're pawns in a deadly game perpetrated by a notorious serial killer.",
-        imageLink: "https://cdn.shopify.com/s/files/1/0057/3728/3618/products/ecd50a0d43472188e7ae9c0a743c6a37_77fd3867-a592-4fcc-be37-bd9fdadc1ba3_480x.progressive.jpg?v=1573615962",
+        imageLink: "https://www.themoviedb.org/t/p/w500/pparEGTCxcTiImyVFoKD0LX11N8.jpg",
         director: 'James Wan',
         movieRating: 'R',
         year: 2004,
@@ -364,7 +364,7 @@ module.exports = {
     {
         title: "It",
         plot: "In 1960, seven pre-teen outcasts fight an evil demon who poses as a child-killing clown. Thirty years later, they reunite to stop the demon once and for all when it returns to their hometown.",
-        imageLink: "https://img.moviepostershop.com/it-movie-poster-1990-1020252073.jpg",
+        imageLink: "https://m.media-amazon.com/images/M/MV5BYjg1YTRkNzQtODgyYi00MTQ5LThiMDYtNDJjMWRjNTdjZDZlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg",
         director: 'Tommy Lee Wallace',
         movieRating: 'TV-PG',
         year: 1990,
