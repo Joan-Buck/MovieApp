@@ -1,9 +1,16 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const db = require('../db/models');
+const { csrfProtection, asyncHandler } = require('./utils');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'a/A Express Skeleton Home' });
-});
+
+router.get('/', asyncHandler(async (req, res, next) => {
+  const movies = await db.Movie.findAll({
+    order: [ [ 'title', 'ASC' ] ]
+  }); //ratings may be added in future
+
+  res.render('index', { title: 'Movie App', movies })
+
+}));
 
 module.exports = router;
