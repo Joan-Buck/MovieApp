@@ -12,5 +12,6 @@ block content
   div.moviesDiv
     each movie in movies
       div.movieCard
-        img(src= movie.imageLink)
-        p= movie.title
+        a(href=`/movies/${movie.id}`)
+          img(src= movie.imageLink)
+          p= movie.title
