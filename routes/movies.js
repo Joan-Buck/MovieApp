@@ -35,7 +35,7 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
 router.post('/:movieId/addReview', asyncHandler(async(req, res) => {
     const { title, content } = req.body;
 
-    let username = await db.User.findByPk(req.session.auth.userId);
+    let user = await db.User.findByPk(req.session.auth.userId);
 
     const newReview = await db.Review.create({
         title,
@@ -43,7 +43,7 @@ router.post('/:movieId/addReview', asyncHandler(async(req, res) => {
         movieId: req.params.movieId,
         userId: req.session.auth.userId
     })
-    res.json({ message: 'Success', username });
+    res.json({ message: 'Success', username: user.username });
 }));
 
 

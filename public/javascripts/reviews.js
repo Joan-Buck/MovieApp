@@ -1,13 +1,13 @@
 window.addEventListener('load', e => {
-    const submitReview = document.querySelector('.reviewSubmitButton')
+    // const submitReview = document.querySelector('.reviewSubmitButton')
+    const reviewForm = document.querySelector('.formReview')
 
-    submitReview.addEventListener('click', async(e) => {
+    reviewForm.addEventListener('submit', async(e) => {
         e.preventDefault();
         // e.stopPropagation();
 
         const movieId = e.target.id;
 
-        const reviewForm = document.querySelector('#formReview')
 
         const formData = new FormData(reviewForm);
         const title = formData.get('title');
@@ -20,19 +20,16 @@ window.addEventListener('load', e => {
         })
         const data = await res.json()
             .then(data => {
-                // console.log('************', data.username.username) // for debugging
+
                 if (data.message === 'Success') {
                     reviewForm.style.display = 'none';
-                    // const testingEle = document.querySelector('.testing')
-                    // let p = document.createElement('p')
-                    // p.innerHTML = 'Review created!';
-                    // submitReview.appendChild(p);
-                    const reviewsDiv = document.querySelector('.reviews')
+
+                    const reviewsDiv = document.querySelector('.reviews');
                     const newReviewDiv = document.createElement('div');
                     newReviewDiv.setAttribute('class', 'reviewCard');
-                   
+
                     const reviewUsername = document.createElement('p');
-                    reviewUsername.innerText = data.username.username;
+                    reviewUsername.innerText = data.username;
                     const reviewTitle = document.createElement('p');
                     reviewTitle.innerText = title;
                     const reviewContent = document.createElement('p');
