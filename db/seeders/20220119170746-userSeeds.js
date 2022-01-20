@@ -29,8 +29,15 @@ module.exports = {
     hashedPassword: '$2a$12$k3oSPzhGsfWnFEft6En/fOdsED5ALk.soDErF98Id6GqZLbkqQida',
     createdAt: new Date(),
     updatedAt: new Date()
+   },
+   {
+    email: 'demo4@demo.com',
+    username: 'Demo_User4',
+    hashedPassword: '$2a$12$k3oSPzhGsfWnFEft6En/fOdsED5ALk.soDErF98Id6GqZLbkqQida',
+    createdAt: new Date(),
+    updatedAt: new Date()
    }
-  
+
   ], {});
   },
 
