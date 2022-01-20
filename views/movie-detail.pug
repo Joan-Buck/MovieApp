@@ -27,6 +27,5 @@ block content
                     p= review.User.username
                     p= review.title
                     p= review.content
-                    div.deleteDiv
-                        form(action=`/movies/reviews/${review.id}/delete`, method="post" class='deleteForm' id=`review_${review.id}`)
-                            button(type='submit' class='deleteReviewButton' value= `${review.id}`) Delete
+                    form(action=`/movies/reviews/${review.id}/delete`, method="post" class='deleteForm' id=`review_${review.id}`)
+                        button(type='submit' class='deleteReviewButton' value= `${review.id}`) Delete
