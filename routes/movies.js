@@ -17,17 +17,33 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
     res.render('movie-detail', { movie, reviews });
 }));
 
+//========= Working route handler for creating a review ========
+// router.post('/:movieId/addReview', asyncHandler(async(req, res) => {
+//     const { title, content } = req.body;
+
+//     const newReview = await db.Review.create({
+//         title,
+//         content,
+//         movieId: req.params.movieId,
+//         userId: req.session.auth.userId
+//     })
+//     // res.json({ message: 'Success' });
+//     res.redirect('/');
+// }));
+
+// testing route handler to create a review with json
 router.post('/:movieId/addReview', asyncHandler(async(req, res) => {
     const { title, content } = req.body;
-    console.log('==================',req.params.movieId)
+
+    let username = await db.User.findByPk(req.session.auth.userId);
+
     const newReview = await db.Review.create({
         title,
         content,
         movieId: req.params.movieId,
         userId: req.session.auth.userId
     })
-    // res.json({ message: 'Success' });
-    res.redirect('/');
+    res.json({ message: 'Success', username });
 }));
 
 

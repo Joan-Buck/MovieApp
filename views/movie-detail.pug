@@ -14,15 +14,16 @@ block content
         p= movie.Genre.name
         p= movie.duration
     div.reviewDiv
-        h2 Reviews
+        h2.testing Reviews
         form(action=`/movies/${movie.id}/addReview`, method="post" id='formReview')
             input(type="hidden", name="_csrf" value=csrfToken)
             label(for='title') Your Review:
             input(type="text" name="title" placeholder='Write your title here')
             textarea(name="content" placeholder='Write your review here')
             button(class='reviewSubmitButton' id=`${movie.id}`) Submit Review
-        each review in reviews
-            p= review.User.username
-            p= review.title
-            p= review.content
-            //- p= 'test'
+        div.reviews
+            each review in reviews
+                div.reviewCard
+                    p= review.User.username
+                    p= review.title
+                    p= review.content
