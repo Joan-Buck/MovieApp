@@ -20,8 +20,14 @@ block content
                 button
                     a(href=`/my-lists/add-movie/${movie.id}`) Add to My List
 
+    h2 Reviews
     div.reviewDiv
-        h2 Reviews
+        div.errorsDiv
+            if errors
+                p The following error(s) occurred:
+                ul.errors
+                    each errors in error
+                        li= error
         if locals.authenticated && !userHasReview
             form( action=`/movies/${movie.id}/addReview`, method="post" class='formReview' id=`${movie.id}`)
                 input(type="hidden", name="_csrf" value=csrfToken)
