@@ -16,7 +16,7 @@ block content
     div.reviewDiv
         h2 Reviews
         if locals.authenticated && !userHasReview
-            form(action=`/movies/${movie.id}/addReview`, method="post" class='formReview' id=`${movie.id}`)
+            form( action=`/movies/${movie.id}/addReview`, method="post" class='formReview' id=`${movie.id}`)
                 input(type="hidden", name="_csrf" value=csrfToken)
                 label(for='title') Your Review:
                 input(type="text" name="title" placeholder='Write your title here')
@@ -28,6 +28,7 @@ block content
                     p= review.User.username
                     p= review.title
                     p= review.content
-                    if locals.user.id === review.userId
-                        form(action=`/movies/reviews/${review.id}/delete`, method="post" class='deleteForm' id=`review_${review.id}`)
-                            button(type='submit' class='deleteReviewButton' value= `${review.id}`) Delete
+                    if locals.authenticated
+                        if locals.user.id === review.userId
+                            form(action=`/movies/reviews/${review.id}/delete`, method="post" class='deleteForm' id=`review_${review.id}`)
+                                button(type='submit' class='deleteReviewButton' value= `${review.id}`) Delete
