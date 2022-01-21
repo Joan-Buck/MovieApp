@@ -7,6 +7,8 @@ block content
     h2= myList.name
     form(action=`/my-lists/${myList.id}/delete`, method="post" class='deleteMyList' id=`myList_${myList.id}`)
             button(type='submit' class='deleteMyListButton' value= `${myList.id}`) Delete List
+    button(type="submit")
+        a(href="/") Add Movies
     div.listsDiv
         each movie in myList.Movies
             div.movieCard

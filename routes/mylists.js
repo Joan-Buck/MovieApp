@@ -4,6 +4,7 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const db = require('../db/models');
 const router = express.Router();
 const { signInUser, signOutUser } = require('../auth');
+const { Op, Sequelize } = require('sequelize');
 
 
 router.get('/add-movie/:movieId', asyncHandler(async (req, res) => {
@@ -13,7 +14,10 @@ router.get('/add-movie/:movieId', asyncHandler(async (req, res) => {
         where: { userId: req.session.auth.userId },
         include: db.User
     })
-    res.render('add-to-my-list', { lists, movieId });
+
+    res.render('add-to-my-list', { title: 'Movie App | Add To My List', lists, movieId });
+
+
 }));
 
 router.post('/add-to-list', asyncHandler(async (req, res) => {
@@ -40,13 +44,31 @@ router.post('/:myListId/movies/:movieId', asyncHandler(async (req, res) => {
 
 
 router.get('/', csrfProtection, asyncHandler(async (req, res) => {
-
-    let lists = await db.MyList.findAll({
-        where: { userId: req.session.auth.userId },
+    let builtInLists = await db.MyList.findAll({
+        where: {
+            name: ['Watched', 'To Watch'],
+            userId: req.session.auth.userId
+        },
+        order: [['name', 'DESC']],
         include: db.User
     })
 
-    res.render('my-list', { lists })
+const Op = Sequelize.Op;
+
+    let customLists = await db.MyList.findAll({
+        where: {
+            name: {
+                [Op.notIn]: ['Watched', 'To Watch']
+            },
+            userId: req.session.auth.userId
+        },
+        order: [['createdAt', 'DESC']],
+        include: db.User
+    })
+
+    let lists = builtInLists.concat(customLists);
+
+    res.render('my-list', { title: 'Movie App | My Lists', lists })
 }))
 
 const myListValidator = [
@@ -60,6 +82,7 @@ const myListValidator = [
 
 router.get('/new', csrfProtection, asyncHandler(async (req, res) => {
     res.render('new-list', {
+        title: 'Movie App | New List',
         csrfToken: req.csrfToken()
     })
 }));
@@ -92,7 +115,6 @@ router.get('/:id', asyncHandler(async (req, res) => {
     const myList = await db.MyList.findByPk(req.params.id, {
         include: [db.Movie]
     });
-    console.log('========', myList)
 
     res.render('list-detail', { myList });
 

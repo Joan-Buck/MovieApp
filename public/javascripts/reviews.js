@@ -2,83 +2,82 @@ window.addEventListener('load', e => {
     const reviewForm = document.querySelector('.formReview');
     const allTheDeleteButtons = document.querySelectorAll('.deleteReviewButton')
 
-    if(reviewForm) {
-    reviewForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        e.stopPropagation();
+    if (reviewForm) {
+        reviewForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
 
-        const movieId = e.target.id;
+            const movieId = e.target.id;
 
-        const formData = new FormData(reviewForm);
-        const title = formData.get('title');
-        const content = formData.get('content');
+            const formData = new FormData(reviewForm);
+            const title = formData.get('title');
+            const content = formData.get('content');
 
-        const res = await fetch(`/movies/${movieId}/addReview`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title, content })
-        })
-        const data = await res.json()
-            .then(data => {
-
-                if (data.message === 'Success') {
-                    reviewForm.style.display = 'none';
-
-                    const reviewsDiv = document.querySelector('.reviews');
-                    const reviewCard = document.createElement('div');
-                    reviewCard.setAttribute('id', `reviewCard_${data.review}`)
-                    reviewCard.setAttribute('class', 'reviewCard');
-
-                    const reviewUsername = document.createElement('p');
-                    reviewUsername.innerText = data.username;
-                    const reviewTitle = document.createElement('p');
-                    reviewTitle.innerText = title;
-                    const reviewContent = document.createElement('p');
-                    reviewContent.innerText = content;
-
-
-                    let deleteForm = document.createElement('form');
-                    deleteForm.setAttribute('action', `/movies/reviews/${data.review}/delete`)
-                    deleteForm.setAttribute('method', 'POST')
-                    deleteForm.setAttribute('class', 'deleteForm');
-                    deleteForm.setAttribute('id', `review_${data.review}`);
-
-                    let deleteButton = document.createElement('button');
-                    deleteButton.innerText = 'Delete';
-                    deleteButton.setAttribute('value', `${data.review}`);
-
-
-                    deleteForm.appendChild(deleteButton);
-                    reviewCard.append(reviewUsername, reviewTitle, reviewContent, deleteForm);
-                    reviewsDiv.appendChild(reviewCard);
-
-
-                    deleteButton.addEventListener('click', async (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-
-                        // review_${:id}
-                        const reviewId = (e.target.value)
-                        console.log(reviewId)
-
-                        const res = await fetch(`/movies/reviews/${reviewId}/delete`, {
-                            method: 'DELETE'
-                        })
-                        const data = await res.json()
-                            .then(data => {
-                                if (data.message === 'Success') {
-                                    const review = document.querySelector(`#reviewCard_${reviewId}`);
-                                    review.remove();
-                                    reviewForm.style.display = 'block';
-
-                                }
-                            })
-                    });
-                }
+            const res = await fetch(`/movies/${movieId}/addReview`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title, content })
             })
+            const data = await res.json()
+                .then(data => {
 
-    });
-}
+                    if (data.message === 'Success') {
+                        reviewForm.style.display = 'none';
+
+                        const reviewsDiv = document.querySelector('.reviews');
+                        const reviewCard = document.createElement('div');
+                        reviewCard.setAttribute('id', `reviewCard_${data.review}`)
+                        reviewCard.setAttribute('class', 'reviewCard');
+
+                        const reviewUsername = document.createElement('p');
+                        reviewUsername.innerText = data.username;
+                        const reviewTitle = document.createElement('p');
+                        reviewTitle.innerText = title;
+                        const reviewContent = document.createElement('p');
+                        reviewContent.innerText = content;
+
+
+                        let deleteForm = document.createElement('form');
+                        deleteForm.setAttribute('action', `/movies/reviews/${data.review}/delete`)
+                        deleteForm.setAttribute('method', 'POST')
+                        deleteForm.setAttribute('class', 'deleteForm');
+                        deleteForm.setAttribute('id', `review_${data.review}`);
+
+                        let deleteButton = document.createElement('button');
+                        deleteButton.innerText = 'Delete';
+                        deleteButton.setAttribute('value', `${data.review}`);
+
+
+                        deleteForm.appendChild(deleteButton);
+                        reviewCard.append(reviewUsername, reviewTitle, reviewContent, deleteForm);
+                        reviewsDiv.prepend(reviewCard);
+
+
+                        deleteButton.addEventListener('click', async (e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+
+                            // review_${:id}
+                            const reviewId = (e.target.value)
+                            console.log(reviewId)
+
+                            const res = await fetch(`/movies/reviews/${reviewId}/delete`, {
+                                method: 'DELETE'
+                            })
+                            const data = await res.json()
+                                .then(data => {
+                                    if (data.message === 'Success') {
+                                        const review = document.querySelector(`#reviewCard_${reviewId}`);
+                                        review.remove();
+                                        reviewForm.style.display = 'block';
+                                    }
+                                })
+                        });
+                    }
+                })
+
+        });
+    }
 
     // add event listener for allTheDeleteButtons on page load
     for (let i = 0; i < allTheDeleteButtons.length; i++) {
@@ -99,7 +98,7 @@ window.addEventListener('load', e => {
                     if (data.message === 'Success') {
                         const review = document.querySelector(`#reviewCard_${reviewId}`);
                         review.remove();
-            
+
                         // when user deletes a review, create a new review form dynamically
 
                         const dynamicReviewForm = document.createElement('form');
@@ -124,14 +123,14 @@ window.addEventListener('load', e => {
                         let titleInput = document.createElement('input');
                         titleInput.setAttribute('type', 'text');
                         titleInput.setAttribute('name', 'title');
-                        titleInput.setAttribute('placeholder','Write your title here' );
+                        titleInput.setAttribute('placeholder', 'Write your title here');
 
                         //create text area and set attributes
                         let textarea = document.createElement('textarea');
                         textarea.setAttribute('name', 'content');
-                        textarea.setAttribute('placeholder','Write your review here' );
+                        textarea.setAttribute('placeholder', 'Write your review here');
 
-                        //create button 
+                        //create button
                         let submitReviewButton = document.createElement('button');
                         submitReviewButton.setAttribute('class', 'reviewSubmitButton');
                         submitReviewButton.innerText = 'Submit Review';
@@ -157,37 +156,39 @@ window.addEventListener('load', e => {
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify({ title, content })
                             })
+
                             const data = await res.json()
                                 .then(data => {
+
                                     if (data.message === 'Success') {
                                         dynamicReviewForm.style.display = 'none';
-                    
+
                                         const reviewsDiv = document.querySelector('.reviews');
                                         const reviewCard = document.createElement('div');
                                         reviewCard.setAttribute('id', `reviewCard_${data.review}`)
                                         reviewCard.setAttribute('class', 'reviewCard');
-                    
+
                                         const reviewUsername = document.createElement('p');
                                         reviewUsername.innerText = data.username;
                                         const reviewTitle = document.createElement('p');
                                         reviewTitle.innerText = title;
                                         const reviewContent = document.createElement('p');
                                         reviewContent.innerText = content;
-                    
+
                                         let deleteForm = document.createElement('form');
                                         deleteForm.setAttribute('action', `/movies/reviews/${data.review}/delete`)
                                         deleteForm.setAttribute('method', 'POST')
                                         deleteForm.setAttribute('class', 'deleteForm');
                                         deleteForm.setAttribute('id', `review_${data.review}`);
-                    
+
                                         let deleteButton = document.createElement('button');
                                         deleteButton.innerText = 'Delete';
                                         deleteButton.setAttribute('value', `${data.review}`);
-                    
-                    
+
+
                                         deleteForm.appendChild(deleteButton);
                                         reviewCard.append(reviewUsername, reviewTitle, reviewContent, deleteForm);
-                                        reviewsDiv.appendChild(reviewCard);
+                                        reviewsDiv.prepend(reviewCard);
 
 
                                         deleteButton.addEventListener('click', async (e) => {
@@ -209,10 +210,10 @@ window.addEventListener('load', e => {
                                                     }
                                                 })
                                         });
-                                    }            
+                                    }
                                 })
+                            
                         })
-
                     }
                 })
         })
