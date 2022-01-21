@@ -20,7 +20,7 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
     if(req.session.auth) {
     const userReview = await db.Review.findAll({
         where: {
-            movieId: req.params.id, 
+            movieId: req.params.id,
             userId: req.session.auth.userId
         }
     });
@@ -33,21 +33,7 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
     res.render('movie-detail', { movie, reviews, userHasReview });
 }));
 
-//========= Working route handler for creating a review ========
-// router.post('/:movieId/addReview', asyncHandler(async(req, res) => {
-//     const { title, content } = req.body;
 
-//     const newReview = await db.Review.create({
-//         title,
-//         content,
-//         movieId: req.params.movieId,
-//         userId: req.session.auth.userId
-//     })
-//     // res.json({ message: 'Success' });
-//     res.redirect('/');
-// }));
-
-// testing route handler to create a review with json
 router.post('/:movieId/addReview', asyncHandler(async(req, res) => {
     const { title, content } = req.body;
 
@@ -72,6 +58,7 @@ router.delete('/reviews/:reviewId/delete', asyncHandler(async(req, res) => {
         res.json({ message: 'Failed' })
     }
 }));
+
 
 
 module.exports = router;
