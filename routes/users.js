@@ -82,7 +82,7 @@ const signupValidator = [
     })
 ];
 
-router.post('/signup', csrfProtection, signupValidator, asyncHandler(async(req, res) => {
+router.post('/signup', csrfProtection, signupValidator, asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
 
   const user = db.User.build({
@@ -120,11 +120,11 @@ const signinValidator = [
     .exists({ checkFalsy: true })
     .withMessage('Please provide a value for Email.'),
   check('password')
-    .exists( {checkFalsy: true})
+    .exists({ checkFalsy: true })
     .withMessage('Please provide a value for Password.')
 ];
 
-router.post('/signin', csrfProtection, signinValidator, asyncHandler(async(req, res) => {
+router.post('/signin', csrfProtection, signinValidator, asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
   let errors = [];
@@ -133,16 +133,16 @@ router.post('/signin', csrfProtection, signinValidator, asyncHandler(async(req, 
 
   if (validatorErrors.isEmpty()) {
 
-    const user = await db.User.findOne( {where: { email } })
+    const user = await db.User.findOne({ where: { email } })
 
-      if (user !== null) {
-        const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
-        if (passwordMatch) {
-          signInUser(req, res, user)
-          return res.redirect('/')
-        }
+    if (user !== null) {
+      const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
+      if (passwordMatch) {
+        signInUser(req, res, user)
+        return res.redirect('/')
       }
-      errors.push('Signin failed for the provided email address and password.')
+    }
+    errors.push('Signin failed for the provided email address and password.')
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);
     res.render('signin', {
@@ -159,7 +159,7 @@ router.get('/signout', (req, res) => {
   res.redirect('/users/signin');
 });
 
-router.get('/signin/demo', asyncHandler(async(req, res, next) => {
+router.get('/signin/demo', asyncHandler(async (req, res, next) => {
   try {
     const user = await db.User.findOne({ where: { email: 'demo@demo.com' } });
     signInUser(req, res, user);

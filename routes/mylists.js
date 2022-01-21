@@ -53,7 +53,7 @@ router.get('/', csrfProtection, asyncHandler(async (req, res) => {
         include: db.User
     })
 
-const Op = Sequelize.Op;
+    const Op = Sequelize.Op;
 
     let customLists = await db.MyList.findAll({
         where: {
@@ -116,7 +116,7 @@ router.get('/:id', asyncHandler(async (req, res) => {
         include: [db.Movie]
     });
 
-    res.render('list-detail', { myList });
+    res.render('list-detail', { myList, title: `Movie App | ${myList.name}` });
 
 }));
 
