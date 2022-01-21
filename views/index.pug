@@ -8,7 +8,7 @@ append head
 
 block content
   h1= Movies
-  if locals.user.id
+  if locals.authenticated
     p Welcome, #{locals.user.username}!
   div.moviesDiv
     each movie in movies
