@@ -1,13 +1,17 @@
 extends layout
 
-append head
-
 block content
-    button(type="submit")
-        a(href='/my-lists/new') New List
     div.listContainer
         each list in lists
-            div.listCard#list.id
+            div.listCard
                 a(href=`/my-lists/${list.id}`)
                     img(src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9TTyd6OFDYmLQd9sX3U53pL7sngU7lkyfEw&usqp=CAU" alt="Movie Image Thumbnail")
                     p= list.name
+                    form(action="/my-lists/add-to-list", method="post")
+                        input(type="hidden", name="movieId" value=movieId)
+                        input(type="hidden", name="myListId" value=list.id)
+                        button(type="submit") Add to List
+
+
+
+
