@@ -17,8 +17,9 @@ block content
                 p= movie.Genre.name
                 p= movie.duration
                 p= movie.plot
-                button
-                    a(href=`/my-lists/add-movie/${movie.id}`) Add to My List
+                if locals.authenticated
+                    button
+                        a(href=`/my-lists/add-movie/${movie.id}`) Add to My List
 
     div.reviewDiv
         h2 Reviews
