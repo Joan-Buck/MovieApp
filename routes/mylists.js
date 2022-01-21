@@ -6,7 +6,7 @@ const router = express.Router();
 const { signInUser, signOutUser } = require('../auth');
 
 
-router.get('/add-movie/:movieId', asyncHandler(async(req, res) => {
+router.get('/add-movie/:movieId', asyncHandler(async (req, res) => {
     const movieId = req.params.movieId;
 
     let lists = await db.MyList.findAll({
@@ -14,10 +14,9 @@ router.get('/add-movie/:movieId', asyncHandler(async(req, res) => {
         include: db.User
     })
     res.render('add-to-my-list', { lists, movieId });
-
 }));
 
-router.post('/add-to-list', asyncHandler(async(req, res) => {
+router.post('/add-to-list', asyncHandler(async (req, res) => {
     const { movieId, myListId } = req.body;
 
     const movieList = await db.MovieList.create({
@@ -26,9 +25,9 @@ router.post('/add-to-list', asyncHandler(async(req, res) => {
     });
 
     res.redirect(`/my-lists/${myListId}`)
-}))
+}));
 
-router.post('/:myListId/movies/:movieId', asyncHandler(async(req, res) => {
+router.post('/:myListId/movies/:movieId', asyncHandler(async (req, res) => {
     const movieToRemove = await db.MovieList.findOne({
         where: {
             movieId: req.params.movieId,
