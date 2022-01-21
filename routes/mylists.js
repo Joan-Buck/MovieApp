@@ -10,10 +10,34 @@ const { Op, Sequelize } = require('sequelize');
 router.get('/add-movie/:movieId', asyncHandler(async (req, res) => {
     const movieId = req.params.movieId;
 
-    let lists = await db.MyList.findAll({
-        where: { userId: req.session.auth.userId },
+    // let lists = await db.MyList.findAll({
+    //     where: { userId: req.session.auth.userId },
+    //     include: db.User
+    // })
+
+    let builtInLists = await db.MyList.findAll({
+        where: {
+            name: ['Watched', 'To Watch'],
+            userId: req.session.auth.userId
+        },
+        order: [['name', 'DESC']],
         include: db.User
     })
+
+    const Op = Sequelize.Op;
+
+    let customLists = await db.MyList.findAll({
+        where: {
+            name: {
+                [Op.notIn]: ['Watched', 'To Watch']
+            },
+            userId: req.session.auth.userId
+        },
+        order: [['createdAt', 'DESC']],
+        include: db.User
+    })
+
+    let lists = builtInLists.concat(customLists);
 
     res.render('add-to-my-list', { title: 'Movie App | Add To My List', lists, movieId });
 
