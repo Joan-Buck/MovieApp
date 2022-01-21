@@ -17,6 +17,7 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
         include: db.User
     });
 
+    if(req.session.auth) {
     const userReview = await db.Review.findAll({
         where: {
             movieId: req.params.id, 
@@ -27,7 +28,7 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
     if(userReview.length > 0) {
         userHasReview = true;
     }
-
+    }
 
     res.render('movie-detail', { movie, reviews, userHasReview });
 }));
