@@ -4,15 +4,18 @@ html
       block head
         title= title
         link(rel='stylesheet' href='/stylesheets/reset.css')
+        link(rel='stylesheet' href='/stylesheets/layout.css')
+
   body
     nav
       a(href='/') Movie App
-      if locals.authenticated
-        a(href='/my-lists') My Lists
-        a(href='/users/signout') Sign Out
-      else
-        a(href='/users/signin') Sign In
-        a(href='/users/signup') Sign Up
+      div.topRight
+        if locals.authenticated
+          a(href='/my-lists') My Lists
+          a(href='/users/signout') Sign Out
+        else
+          a(href='/users/signin') Sign In
+          a(href='/users/signup') Sign Up
 
 
     block content

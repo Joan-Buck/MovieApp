@@ -7,17 +7,18 @@ append head
 
 block content
     div.movieDetail
-        h2= movie.title
-        img(src= movie.imageLink)
+        div.mainInfo
+            h2= movie.title
+            img(src= movie.imageLink)
         div.movieDetailInfo
             div.movieDetailData
                 p= movie.movieRating
                 p= movie.year
                 p= movie.Genre.name
                 p= movie.duration
-            p= movie.plot
-            button
-                a(href=`/my-lists/add-movie/${movie.id}`) Add to My List
+                p= movie.plot
+                button
+                    a(href=`/my-lists/add-movie/${movie.id}`) Add to My List
 
     div.reviewDiv
         h2 Reviews

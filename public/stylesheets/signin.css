@@ -1,0 +1,22 @@
+form {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+
+    /* Positioning box to center of page */
+    margin: auto;
+
+    /* Border around form*/
+    border: 2px solid black;
+    border-radius: 2em;
+    padding: 3em;
+}
+form > a {
+    text-align: center;
+}
+
+form input, button {
+    margin: 5px;
+    height: 3em;
+    border-radius: 3px;
+}
