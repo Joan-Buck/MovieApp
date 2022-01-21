@@ -6,6 +6,7 @@ const router = express.Router();
 const { signInUser, signOutUser } = require('../auth');
 const { Op, Sequelize } = require('sequelize');
 
+
 router.get('/add-movie/:movieId', asyncHandler(async (req, res) => {
     const movieId = req.params.movieId;
 
@@ -13,7 +14,9 @@ router.get('/add-movie/:movieId', asyncHandler(async (req, res) => {
         where: { userId: req.session.auth.userId },
         include: db.User
     })
+
     res.render('add-to-my-list', { title: 'Movie App | Add To My List', lists, movieId });
+
 
 }));
 
@@ -26,7 +29,7 @@ router.post('/add-to-list', asyncHandler(async (req, res) => {
     });
 
     res.redirect(`/my-lists/${myListId}`)
-}))
+}));
 
 router.post('/:myListId/movies/:movieId', asyncHandler(async (req, res) => {
     const movieToRemove = await db.MovieList.findOne({

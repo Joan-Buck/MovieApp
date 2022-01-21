@@ -4,6 +4,11 @@ append head
    link(rel="stylesheet" href="/stylesheets/signin.css")
 
 block content
+    if errors
+        p The following error(s) occurred:
+        ul.errors
+            each error in errors
+                li=  error
     form(action="/users/signin" method="post")
         input(type="hidden", name="_csrf" value=csrfToken)
         label(for="email") Email
