@@ -1,0 +1,12 @@
+* {
+    text-decoration: none;
+}
+nav {
+    padding: 10px 5px;
+    }
+    .topRight {
+      float: right;
+    }
+    .topRight a {
+      padding: 0 5px;
+    }
