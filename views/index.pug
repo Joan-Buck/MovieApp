@@ -8,7 +8,8 @@ append head
 
 block content
   h1= Movies
-  p Welcome to your Movie App!
+  if locals.user.id
+    p Welcome, #{locals.user.username}!
   div.moviesDiv
     each movie in movies
       div.movieCard
