@@ -1,9 +1,9 @@
 extends layout
 
 append head
-  //- add page specific styles by appending to the head
-  //- add page specific js
-  script(src="/javascripts/reviews.js" type="module" defer)
+    script(src="/javascripts/reviews.js" type="module" defer)
+    link(rel="stylesheet" href="/stylesheets/reviews.css")
+    link(rel="stylesheet" href="/stylesheets/movie-detail.css")
 
 block content
     div.movieDetail
@@ -15,17 +15,19 @@ block content
         p= movie.duration
     div.reviewDiv
         h2 Reviews
-        form(action=`/movies/${movie.id}/addReview`, method="post" class='formReview' id=`${movie.id}`)
-            input(type="hidden", name="_csrf" value=csrfToken)
-            label(for='title') Your Review:
-            input(type="text" name="title" placeholder='Write your title here')
-            textarea(name="content" placeholder='Write your review here')
-            button(class='reviewSubmitButton') Submit Review
+        if locals.authenticated && !userHasReview
+            form(action=`/movies/${movie.id}/addReview`, method="post" class='formReview' id=`${movie.id}`)
+                input(type="hidden", name="_csrf" value=csrfToken)
+                label(for='title') Your Review:
+                input(type="text" name="title" placeholder='Write your title here')
+                textarea(name="content" placeholder='Write your review here')
+                button(class='reviewSubmitButton') Submit Review
         div.reviews
             each review in reviews
                 div.reviewCard(id=`reviewCard_${review.id}`)
                     p= review.User.username
                     p= review.title
                     p= review.content
-                    form(action=`/movies/reviews/${review.id}/delete`, method="post" class='deleteForm' id=`review_${review.id}`)
-                        button(type='submit' class='deleteReviewButton' value= `${review.id}`) Delete
+                    if locals.user.id === review.userId
+                        form(action=`/movies/reviews/${review.id}/delete`, method="post" class='deleteForm' id=`review_${review.id}`)
+                            button(type='submit' class='deleteReviewButton' value= `${review.id}`) Delete

@@ -2,6 +2,7 @@ window.addEventListener('load', e => {
     const reviewForm = document.querySelector('.formReview');
     const allTheDeleteButtons = document.querySelectorAll('.deleteReviewButton')
 
+    if(reviewForm) {
     reviewForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -79,6 +80,8 @@ window.addEventListener('load', e => {
             })
 
     });
+}
+
     // add event listener for allTheDeleteButtons on page load
     for (let i = 0; i < allTheDeleteButtons.length; i++) {
         const deleteButton = allTheDeleteButtons[i];
@@ -92,11 +95,54 @@ window.addEventListener('load', e => {
             const res = await fetch(`/movies/reviews/${reviewId}/delete`, {
                 method: 'DELETE'
             })
+
             const data = await res.json()
                 .then(data => {
                     if (data.message === 'Success') {
                         const review = document.querySelector(`#reviewCard_${reviewId}`);
                         review.remove();
+            
+                        // when user deletes a review, create a new review form dynamically
+
+                        const dynamicReviewForm = document.createElement('form');
+                        dynamicReviewForm.setAttribute('action', `/movies/${data.movieId}/addReview`);
+                        dynamicReviewForm.setAttribute('method', 'post');
+                        dynamicReviewForm.setAttribute('class', 'formReview');
+                        dynamicReviewForm.setAttribute('id', `${data.movieId}`);
+
+                        //get the value of the _csrf token
+                        let csrfToken = document.cookie.split('=')[1];
+                        //create the input form and set it's attributes
+                        let csrfInput = document.createElement('input');
+                        csrfInput.setAttribute('type', 'hidden');
+                        csrfInput.setAttribute('name', '_csrf');
+                        csrfInput.setAttribute('value', csrfToken);
+
+                        //create the label and input for the Title
+                        let label = document.createElement('label');
+                        label.setAttribute('for', 'title');
+                        label.innerText = 'Your Review:';
+
+                        let titleInput = document.createElement('input');
+                        titleInput.setAttribute('type', 'text');
+                        titleInput.setAttribute('name', 'title');
+                        titleInput.setAttribute('placeholder','Write your title here' );
+
+                        //create text area and set attributes
+                        let textarea = document.createElement('textarea');
+                        textarea.setAttribute('name', 'content');
+                        textarea.setAttribute('placeholder','Write your review here' );
+
+                        //create button 
+                        let submitReviewButton = document.createElement('button');
+                        submitReviewButton.setAttribute('class', 'reviewSubmitButton');
+                        submitReviewButton.innerText = 'Submit Review';
+
+                        dynamicReviewForm.append(csrfInput, label, titleInput, textarea, submitReviewButton)
+                        const reviewDiv = document.querySelector('.reviewDiv');
+                        reviewDiv.prepend(dynamicReviewForm)
+
+
                     }
                 })
         })
