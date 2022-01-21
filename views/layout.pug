@@ -6,7 +6,9 @@ html
         link(rel='stylesheet' href='/stylesheets/reset.css')
   body
     nav
+      a(href='/') Movie App
       if locals.authenticated
+        a(href='/my-lists') My Lists
         a(href='/users/signout') Sign Out
       else
         a(href='/users/signin') Sign In

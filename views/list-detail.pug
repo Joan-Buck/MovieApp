@@ -1,4 +1,4 @@
- extends layout
+extends layout
 
 append head
 //-   script(src="/javascripts/reviews.js" type="module" defer)
@@ -6,6 +6,6 @@ append head
 block content
 
     h2= myList.name
-    //- button
-    //-     form(action=`/movies/reviews/${review.id}/delete`, method="post" class='deleteForm' id=`review_${review.id}`)
-    //-         button(type='submit' class='deleteReviewButton' value= `${review.id}`) Delete
+
+        form(action=`/my-lists/${myList.id}/delete`, method="post" class='deleteMyList' id=`myList_${myList.id}`)
+            button(type='submit' class='deleteMyListButton' value= `${myList.id}`) Delete List
