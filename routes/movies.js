@@ -7,6 +7,8 @@ const router = express.Router();
 const { signInUser, signOutUser, requireAuth } = require('../auth');
 
 router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
+    let userHasReview = false;
+
     const movie = await db.Movie.findByPk(req.params.id, {
         include: db.Genre
     });
@@ -14,7 +16,20 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
         where: { movieId: req.params.id },
         include: db.User
     });
-    res.render('movie-detail', { movie, reviews });
+
+    const userReview = await db.Review.findAll({
+        where: {
+            movieId: req.params.id, 
+            userId: req.session.auth.userId
+        }
+    });
+
+    if(userReview.length > 0) {
+        userHasReview = true;
+    }
+
+
+    res.render('movie-detail', { movie, reviews, userHasReview });
 }));
 
 //========= Working route handler for creating a review ========
@@ -51,11 +66,11 @@ router.delete('/reviews/:reviewId/delete', asyncHandler(async(req, res) => {
 
     if (deleteReview) {
         await deleteReview.destroy();
-        res.json({ message: 'Success', review: req.params.reviewId })
+        res.json({ message: 'Success', reviewId: req.params.reviewId, movieId: deleteReview.movieId})
     } else {
         res.json({ message: 'Failed' })
     }
-}))
+}));
 
 
 module.exports = router;
