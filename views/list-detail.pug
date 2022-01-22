@@ -1,19 +1,23 @@
 extends layout
 
 append head
-
+  link(rel="stylesheet" href="/stylesheets/list-detail.css")
 
 block content
-    h2= myList.name
-    form(action=`/my-lists/${myList.id}/delete`, method="post" class='deleteMyList' id=`myList_${myList.id}`)
-            button(type='submit' class='deleteMyListButton' value= `${myList.id}`) Delete List
-    button(type="submit")
-        a(href="/") Add Movies
-    div.listsDiv
-        each movie in myList.Movies
-            div.movieCard
-                a(href=`/movies/${movie.id}`)
-                img(src= movie.imageLink)
-                p= movie.title
-                form(action=`/my-lists/${myList.id}/movies/${movie.id}`, method="post")
-                    button(type='submit') Remove Movie From List
+    .main
+
+        .titleDiv   
+            h2= myList.name
+            .buttons
+                button(type="submit").buttonCSS
+                    a(href="/") Add Movies
+                form(action=`/my-lists/${myList.id}/delete`, method="post" class='deleteMyList' id=`myList_${myList.id}`)
+                    button(type='submit' class='deleteMyListButton' value= `${myList.id}`).buttonCSS Delete List
+        div.listsDiv
+            each movie in myList.Movies
+                div.movieCard
+                    a(href=`/movies/${movie.id}` target="_blank")
+                        img(src= movie.imageLink)    
+                    p= movie.title
+                    form(action=`/my-lists/${myList.id}/movies/${movie.id}`, method="post")
+                        button(type='submit').removeButton Remove From List
