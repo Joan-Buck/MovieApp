@@ -9,7 +9,7 @@ router.get('/', asyncHandler(async (req, res, next) => {
     order: [ [ 'title', 'ASC' ] ]
   }); //ratings may be added in future
 
-  res.render('index', { title: 'Movie App', movies })
+  res.render('index', { title: 'CinemAddict', movies })
 
 }));
 

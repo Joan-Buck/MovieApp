@@ -1,7 +1,7 @@
 extends layout
 
 append head
-//-   script(src="/javascripts/reviews.js" type="module" defer)
+
 
 block content
     if errors
@@ -11,6 +11,5 @@ block content
                     li=  error
     form(action="/my-lists" method="post")
         input(type="hidden", name="_csrf" value=csrfToken)
-        //- label(for="name") Name your new list here
         input(type="text" name="name" placeholder="Name your new list here" value=name)
         button(class='listNameButton') Create New List
