@@ -65,7 +65,8 @@ h2 {
     font-style: italic;
     background-color: white;
     padding: 0 10 0 10;
-    letter-spacing: 1px;}
+    letter-spacing: 1px;
+  }
 
 .moviesDiv {
   display: grid;
@@ -83,7 +84,7 @@ h2 {
     flex-direction: column;
     justify-content: center;
     margin: 15px;
-    
+
 }
 
 .movieCard p {
@@ -113,6 +114,4 @@ h2 {
     filter:opacity(50%);
     background-color: white;
     color: black
-} 
-
-
+}
