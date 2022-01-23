@@ -1,12 +1,75 @@
 * {
     text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
 nav {
-    padding: 10px 5px;
-    }
-    .topRight {
-      float: right;
-    }
-    .topRight a {
-      padding: 0 5px;
-    }
+    padding: 15px;
+    margin: 0;
+    background-color: black;
+    color: white;
+    height: 50px;
+    position: sticky;
+    top: 0;
+    margin-bottom: 50px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+}
+.logo:hover {
+  color: rgb(197, 194, 194);
+}
+
+.myLists:hover {
+  color: rgb(197, 194, 194);
+}
+
+.signOut:hover {
+  color: rgb(197, 194, 194);
+}
+
+.signIn:hover {
+  color: rgb(197, 194, 194);
+}
+
+.signUp:hover {
+  color: rgb(197, 194, 194);
+}
+
+.details:hover {
+  color: rgb(197, 194, 194);
+}
+
+.movies:hover {
+  color: rgb(197, 194, 194);
+}
+
+.topRight {
+  float: right;
+  }
+
+.topRight a {
+  padding: 0 5px;
+  }
+
+
+  footer {
+    background-color: black;
+    width: 100%;
+  }
+
+  .footer {
+    margin: 100px 0 0 0;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer a {
+    color: white;
+    height: 200px;
+    padding: 85px 20px 30px 20px;
+  }

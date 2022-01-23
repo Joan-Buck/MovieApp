@@ -4,18 +4,20 @@ append head
    link(rel="stylesheet" href="/stylesheets/signin.css")
 
 block content
-    if errors
-        p The following error(s) occurred:
-        ul.errors
-            each error in errors
-                li=  error
-    form(action="/users/signin" method="post")
-        input(type="hidden", name="_csrf" value=csrfToken)
-        label(for="email") Email
-        input(type="email" name="email")
-        label(for="password") Password
-        input(type="password" name="password")
-        button(type="submit") Sign In
-        button(type="submit")
-            a(href='/users/signin/demo') Demo User
-        a(href='/users/signup') Don't have an account? Create one now
+    div.main
+        if errors
+            div.errors
+                p.errorsTitle The following error(s) occurred:
+                ul.errorsList
+                    each error in errors
+                        li=  error
+        form(action="/users/signin" method="post")
+            input(type="hidden", name="_csrf" value=csrfToken)
+            label(for="email") Email
+            input(type="email" name="email")
+            label(for="password") Password
+            input(type="password" name="password")
+            button.signInUser(type="submit") Sign In
+            button.demoSignIn(type="submit")
+                a(href='/users/signin/demo') Demo User
+            a.signUpUser(href='/users/signup') Don't have an account? Create one now
