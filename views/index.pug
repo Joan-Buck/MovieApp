@@ -1,18 +1,34 @@
 extends layout
 
 append head
-  //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/index.css")
-  //- add page specific js
+  link(rel="stylesheet" href="/stylesheets/carousel.css")
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
+  
   h1= Movies
   if locals.authenticated
     p Welcome, #{locals.user.username}!
-  div.moviesDiv
-    each movie in movies
-      div.movieCard
-        a(href=`/movies/${movie.id}`)
-          img(src= movie.imageLink)
-          p= movie.title
+  .main 
+    .divider 
+        //- hr
+        div.dividerTextDiv
+          h2.dividerText RELEASING SOON
+    div.releasingSoon
+      each movie in movies
+        if movie.year === 2022 || movie.year === 2020
+          div.movieCard
+            a(href=`/movies/${movie.id}`).releasingSoonATag
+              img(src= movie.imageLink)
+              p.releasingSoonMovieTitle= movie.title
+    .divider 
+      hr
+      div.dividerTextDiv
+        h2.dividerText.dividerTextMovies MOVIES
+    div.moviesDiv
+      each movie in movies
+        div.movieCard
+          a(href=`/movies/${movie.id}`)
+            img(src= movie.imageLink)
+            p= movie.title
