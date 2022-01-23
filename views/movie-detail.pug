@@ -12,14 +12,20 @@ block content
             img(src= movie.imageLink)
         div.movieDetailInfo
             div.movieDetailData
-                p= movie.movieRating
-                p= movie.year
-                p= movie.Genre.name
-                p= movie.duration
-                p= movie.plot
+                div.descContain
+                    p= movie.movieRating
+                div.descContain
+                    p= movie.year
+                div.descContain
+                    p= movie.Genre.name
+                div.descContain
+                    p= movie.duration
+                div.customText
+                    p= movie.plot
                 if locals.authenticated
-                    button
-                        a(href=`/my-lists/add-movie/${movie.id}`) Add to My List
+                    div.alignedCards
+                        button.listSubmission
+                            a(href=`/my-lists/add-movie/${movie.id}`) Add to My List
     div.reviewBackground
         div.reviewDiv
             h2 Reviews

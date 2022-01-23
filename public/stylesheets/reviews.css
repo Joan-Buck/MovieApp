@@ -68,3 +68,11 @@ div.reviewCard .username {
 div.reviewCard button {
     color: red;
 }
+
+.reviewSubmitButton:hover {
+    transform: scale(1.05);
+    filter: grayscale(100%);
+    cursor: pointer;
+    font-weight: bold;
+    transition: 300ms;
+}
