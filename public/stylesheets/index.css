@@ -1,43 +1,167 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:ital,wght@0,300;0,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Beastly&display=swap');
+
 .main {
   display: flex;
   flex-direction: column;
-  margin: 30px auto;
-  max-width: 80%;
+  /* margin: 30px auto; */
+  align-content: center;
+  max-width: 100%;
 }
 
 h2 {
   font-size: 30px;
+  padding-left: 190px;
+  padding-top: 30px;
+  z-index: 1;
+  width: 80%;
 }
 
-hr {
-  color: black;
+.topDiv {
+  display: flex;
+flex-direction: column; 
+align-content: center; 
+width: 100%;
+  padding-top: 50px;
+  background-color: black;
+  color: white;
+  position: relative;
+  padding-bottom: 20px;
+  
+}
+
+.test , .test p{
+  position: absolute;
+  max-width: 150px;
+  font-size: 250px;
+  width: 100px;
+  color: palegoldenrod;
+  top: -180px;
+  /* animation: test linear 5s; */
+  animation: test 5s infinite;
+}
+
+@keyframes test {
+0% {
+  transform: translateX(20%);
+  /* transform: rotate(100deg); */
+}
+
+25% {
+  transform: translateX(-20%);
+  /* transform: rotate(20deg); */
+}
+
+75% {
+  transform: translateY(20%);
+  /* transform: rotate(50deg); */
+}
+
+100% {
+  transform: translateX(50%);
+  /* transform: rotate(80deg); */
+}
+
+80% {
+  transform: translateY(-20%);
+
+}
+60% {
+  transform: translateY(-40%);
+
+}
+40% {
+  transform: translateX(10%);
+
+}
+20% {
+  transform: translateY(20%);
+
+}
+}
+
+.test2{
+  position: absolute;
+  /* height: auto; */
+  object-fit: cover;
+  max-width: 150px;
+  font-size: 280px;
+  width: 100px;
+  color: palegoldenrod;
+  z-index: 0;
+  right: 20px;
+  top: -100px;
+  /* animation: test linear 5s; */
+  animation: test 5s infinite;
+}
+
+@keyframes test {
+0% {
+  transform: translateX(100%);
+  /* transform: rotate(100deg); */
+  
+}
+
+25% {
+  transform: translateX(50%);
+  /* transform: rotate(20deg); */
+}
+
+75% {
+  transform: translateY(-30%);
+  /* transform: rotate(50deg); */
+}
+
+100% {
+  transform: translateX(-50%);
+  /* transform: rotate(80deg); */
+}
 }
 
 
-.releasingSoon {
+
+
+.editorsPick {
+display: flex;
+flex-direction: column;
+align-content: center;
+/* background-color: red; */
+}
+
+.topMoviesDiv {
   display: flex;
   justify-content: space-around;
-  padding-bottom: 30px;
-  padding-top: 30px;
-  margin-top: 20px;
-  margin-bottom: 30px;
-  border: solid black 1px;
+  width: 80%;
+  margin: 0 auto;
+  background-color: black;
   /* box-shadow: 0 1em 1em -1em rgba(0, 0, 0, .25); */
 }
 
+
+.bottomDiv {
+  background-color: black;
+  color: white;
+  background-color: rgb(20, 20, 20);
+
+
+}
 .moviesDiv {
-  display: grid;
+  display: grid;  
+  background-color: rgb(20, 20, 20);
+
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
   grid-gap: 10px;
-  padding-top: 30px;
-  margin-top: 20px;
+  padding-top: 20px;
 }
 
 .movieCard {
+z-index: 1;
   text-align: center;
+  background-color: rgb(20, 20, 20);
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,18 +169,25 @@ hr {
 
 }
 
+.topMovies {
+background-color: black;
+}
+
+
 .movieCard p {
   margin: 10px;
   padding-bottom: 15px;
   height: 3vh;
   font-family: 'Poppins', sans-serif;
-
 }
 
 .movieCard img {
   object-fit: cover;
-  height: 300px;
-  width: 200px;
+  object-position: center;
+  height: 365px;
+  width: 250px;
+  filter: saturate(1.5);
+
   text-align: center;
   border-radius: 1em;
 }
@@ -66,39 +197,4 @@ hr {
   position: static;
   filter: grayscale(100%);
   font-style: italic;
-}
-
-.divider {
-  z-index: 0;
-  position: relative;
-  top: 3px;
-}
-
-.dividerText {
-  position: absolute;
-  z-index: 6;
-  font-size: 50px;
-  top: -20px;
-  left: 30px;
-  font-family: 'Playfair Display', serif;
-  font-weight: bold;
-  font-style: italic;
-  background-color: white;
-  padding: 0 10 0 10;
-  letter-spacing: 1px;
-}
-
-.dividerTextMovies {
-  position: absolute;
-  z-index: 6;
-  font-size: 50px;
-  top: -30px;
-  left: 30px;
-  font-family: 'Playfair Display', serif;
-    font-weight: bold;
-  font-style: italic;
-  background-color: white;
-  padding: 0 10px 0 10px;
-  letter-spacing: 3px;
-
 }
