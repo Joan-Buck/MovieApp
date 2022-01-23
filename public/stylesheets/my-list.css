@@ -1,3 +1,9 @@
+html, body {
+    height: 100%;
+    position: relative;
+    overflow: auto;
+  }
+
 .listContainer {
     display: flex;
     /* grid-template-columns: repeat(4, 1fr); */
