@@ -1,9 +1,9 @@
 .main {
     display: flex;
     flex-direction: column;
-    margin: auto;
+    margin: 0 auto;
     /* margin-top: 50px; */
-    vertical-align: middle;
+    /* vertical-align: middle; */
     width: 40%;
 }
 
@@ -115,8 +115,7 @@ button {
     overflow: hidden;
 }
 
-button a {
-    background: coral;
+/* button a {
     width: 5em;
     padding: 2em 6em;
-}
+} */

@@ -1,8 +1,8 @@
 .main {
     display: flex;
     flex-direction: column;
-    margin: auto;
-    vertical-align: middle;
+    margin: 0 auto;
+    /* vertical-align: middle; */
     width: 40%;
 }
 
