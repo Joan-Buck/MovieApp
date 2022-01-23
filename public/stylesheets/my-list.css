@@ -1,13 +1,14 @@
 .listContainer {
     display: flex;
-    grid-template-columns: repeat(4, 1fr);
+    /* grid-template-columns: repeat(4, 1fr); */
     margin: auto;
-    align-items: center;
-    justify-content: space-evenly;
+    /* align-items: center; */
+    width: 80%;
+    /* justify-content: space-evenly; */
 }
 .listContainer img {
     width: 200px;
-    height: 200px;
+    /* height: 200px; */
     object-fit: cover;
     object-position: left;
     border-radius: 10px;
@@ -21,6 +22,11 @@
     background-color: rgb(245, 243, 243);
     margin: auto;
     height: 300px;
+}
+
+.listCard {
+    display: flex;
+    flex-direction: column;
 }
 
 .buttonDiv {
