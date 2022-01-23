@@ -1,9 +1,13 @@
+* {
+    background: rgb(20, 20, 20);
+}
 form {
     /* sizing */
     width: 40%;
     height: 40vh;
     /* design */
-    background: rgb(245, 243, 243);
+    /* background: rgb(245, 243, 243); */
+    background-color: black;
     border-radius: 15px;
     /* positioning */
     display: flex;
@@ -14,11 +18,27 @@ form {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    box-shadow: 0 2px 5px 0 white;
 }
 .form {
     height: 15vh;
     display: flex;
     justify-content: center;
+}
+div.container {
+    position: relative;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+}
+h2 {
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    bottom: 0;
+}
+input {
+    background: white;
 }
 input, button {
     height: 3em;
@@ -27,13 +47,29 @@ input, button {
     border: none;
 }
 button {
-    background: black;
-    color: white;
-}
-button:hover {
     background: white;
     color: black;
 }
+button:hover {
+    background: rgb(20, 20, 20);
+    color: white;
+}
 .error {
     color: red;
+    background: none;
+    transform: translateY(-300%);
+}
+div.form input, div.form button {
+    position: absolute;
+}
+div.form input {
+    transform: translateY(-50%);
+}
+div.form button {
+    transform: translateY(80%);
+}
+div.form input.inputError {
+    /* box-shadow: 0 0 0px 2px rgba(255, 0, 0, 0.8); */
+    border: 0.5px solid red;
+    background:rgba(228, 5, 5, 0.233);
 }
