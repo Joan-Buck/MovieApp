@@ -1,11 +1,44 @@
 .listContainer {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(4, 1fr);
     margin: auto;
+    align-items: center;
+    justify-content: space-evenly;
 }
 .listContainer img {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     object-position: left;
+    border-radius: 10px;
+    justify-content: space-evenly;
+}
+
+.backgroundContain {
+    border: solid rgb(245, 243, 243);
+    border-radius: 15px;
+    padding: 10px;
+    background-color: rgb(245, 243, 243);
+    margin: auto;
+    height: 300px;
+}
+
+.buttonDiv {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px;
+}
+
+#list p {
+    text-align: center;
+    margin: 10px;
+    font-weight: bolder;
+    inline-size: 200px
+}
+
+.backgroundContain:hover {
+    box-shadow: 0 0 3px 1px red;
+    transform: scale(1.05);
+    color: red;
+    transition: 300ms;
 }
