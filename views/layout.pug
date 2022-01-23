@@ -5,17 +5,22 @@ html
         title= title
         link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel='stylesheet' href='/stylesheets/layout.css')
+        link(rel="shortcut icon" type="image/x-icon" href='/stylesheets/favicon.ico')
 
   body
     nav
-      a(href='/') Movie App
+      a.logo(href='/') CinemAddict
       div.topRight
         if locals.authenticated
-          a(href='/my-lists') My Lists
-          a(href='/users/signout') Sign Out
+          a.myLists(href='/my-lists') My Lists
+          a.signOut(href='/users/signout') Sign Out
         else
-          a(href='/users/signin') Sign In
-          a(href='/users/signup') Sign Up
-
+          a.signIn(href='/users/signin') Sign In
+          a.signUp(href='/users/signup') Sign Up
 
     block content
+
+  footer
+  div.footer
+      a.details(href="https://github.com/Joan-Buck/MovieApp") Details
+      a.movies(href="/") Movies

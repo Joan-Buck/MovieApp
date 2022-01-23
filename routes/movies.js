@@ -33,7 +33,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         }
     }
 
-    res.render('movie-detail', { movie, reviews, userHasReview, title: `Movie App | ${movie.title}` });
+    res.render('movie-detail', { movie, reviews, userHasReview, title: `CinemAddict | ${movie.title}` });
 }));
 
 const reviewValidator = [

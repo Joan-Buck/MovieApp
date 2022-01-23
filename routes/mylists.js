@@ -39,7 +39,7 @@ router.get('/add-movie/:movieId', asyncHandler(async (req, res) => {
 
     let lists = builtInLists.concat(customLists);
 
-    res.render('add-to-my-list', { title: 'Movie App | Add To My List', lists, movieId });
+    res.render('add-to-my-list', { title: 'CinemAddict | Add To My List', lists, movieId });
 
 
 }));
@@ -92,7 +92,7 @@ router.get('/', csrfProtection, asyncHandler(async (req, res) => {
 
     let lists = builtInLists.concat(customLists);
 
-    res.render('my-list', { title: 'Movie App | My Lists', lists })
+    res.render('my-list', { title: 'CinemAddict | My Lists', lists })
 }))
 
 const myListValidator = [
@@ -106,7 +106,7 @@ const myListValidator = [
 
 router.get('/new', csrfProtection, asyncHandler(async (req, res) => {
     res.render('new-list', {
-        title: 'Movie App | New List',
+        title: 'CinemAddict | New List',
         csrfToken: req.csrfToken()
     })
 }));
@@ -125,7 +125,7 @@ router.post('/', csrfProtection, myListValidator, asyncHandler(async (req, res) 
     } else {
         const errors = validatorErrors.array().map((error) => error.msg)
         res.render('new-list', {
-            title: 'Movie App | New List',
+            title: 'CinemAddict | New List',
             name,
             errors,
             csrfToken: req.csrfToken()
@@ -140,7 +140,7 @@ router.get('/:id', asyncHandler(async (req, res) => {
         include: [db.Movie]
     });
 
-    res.render('list-detail', { myList, title: `Movie App | ${myList.name}` });
+    res.render('list-detail', { myList, title: `CinemAddict | ${myList.name}` });
 
 }));
 

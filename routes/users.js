@@ -21,7 +21,7 @@ router.get('/signup', csrfProtection, (req, res) => {
 
   res.render('signup', {
     csrfToken: req.csrfToken(),
-    title: 'Movie App | Sign Up',
+    title: 'CinemAddict | Sign Up',
     user
   })
 });
@@ -70,7 +70,6 @@ const signupValidator = [
     .withMessage('Password cannot exceed 50 characters.')
     .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, 'g')
     .withMessage('Password must contain at least 1 lowercase letter, uppercase letter, number, and special character (i.e. "!@#$%^&*").'),
-
   check('confirmPassword')
     .exists({ checkFalsy: true })
     .withMessage('Please confirm password')
@@ -100,7 +99,7 @@ router.post('/signup', csrfProtection, signupValidator, asyncHandler(async (req,
   } else {
     const errors = validatorErrors.array().map((error) => error.msg)
     res.render('signup', {
-      title: 'Movie App | Sign Up',
+      title: 'CinemAddict | Sign Up',
       user,
       errors,
       csrfToken: req.csrfToken()
@@ -110,7 +109,7 @@ router.post('/signup', csrfProtection, signupValidator, asyncHandler(async (req,
 
 router.get('/signin', csrfProtection, (req, res) => {
   res.render('signin', {
-    title: 'Movie App | Sign In',
+    title: 'CinemAddict | Sign In',
     csrfToken: req.csrfToken()
   })
 });
@@ -122,6 +121,13 @@ const signinValidator = [
   check('password')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a value for Password.')
+    .custom((value, { req }) => {
+      if (value !== req.body.password) {
+        throw new Error('Password values do not match!')
+      }
+      return true;
+    })
+
 ];
 
 router.post('/signin', csrfProtection, signinValidator, asyncHandler(async (req, res) => {
@@ -145,13 +151,13 @@ router.post('/signin', csrfProtection, signinValidator, asyncHandler(async (req,
     errors.push('Signin failed for the provided email address and password.')
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);
-    res.render('signin', {
-      title: 'Movie App | Sign In',
-      email,
-      errors,
-      csrfToken: req.csrfToken()
-    })
   }
+  res.render('signin', {
+    title: 'CinemAddict | Sign In',
+    email,
+    errors,
+    csrfToken: req.csrfToken()
+  })
 }));
 
 router.get('/signout', (req, res) => {
