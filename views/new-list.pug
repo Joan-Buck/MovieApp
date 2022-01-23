@@ -1,15 +1,23 @@
 extends layout
 
 append head
-
+    //-   script(src="/javascripts/reviews.js" type="module" defer)
+    link(rel="stylesheet" href="/stylesheets/new-list.css")
 
 block content
-    if errors
-            p The following error(s) occurred:
-            ul.errors
-                each error in errors
-                    li=  error
-    form(action="/my-lists" method="post")
-        input(type="hidden", name="_csrf" value=csrfToken)
-        input(type="text" name="name" placeholder="Name your new list here" value=name)
-        button(class='listNameButton') Create New List
+    //- if errors
+    //-         p The following error(s) occurred:
+    //-         ul.errors
+    //-             each error in errors
+    //-                 li=  error
+    div.form
+        form(action="/my-lists" method="post")
+
+            input(type="hidden", name="_csrf" value=csrfToken)
+            if errors
+                ul.errors
+                    each error in errors
+                        p(class='error')=  error
+
+            input(type="text" name="name" placeholder="Name your new list here" value=name)
+            button(class='listNameButton') Create New List

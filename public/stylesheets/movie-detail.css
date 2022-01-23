@@ -1,12 +1,17 @@
+* {
+  /* background-image: url(https://preview.redd.it/4fxxbm4opjd31.jpg?auto=webp&s=f5b7d62076600a978d290a5e87f13140c47f5cd0); */
+}
 .movieDetail {
-  margin: 20px;
+  margin: 4em auto;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5%;
-  border-radius: 2em;
-  box-shadow: 0 0 1px 2px rgba(0,0,0,.4);
+  border-radius: 15px;
+  /* box-shadow: 0 0 1px 2px rgba(0,0,0,.4); */
   padding: 3em;
+  background: rgb(245, 243, 243);
+  width: 60%;
 }
 .mainInfo {
   display: flex;
@@ -16,34 +21,13 @@
 .mainInfo img {
   width: 400px;
   height: 600px;
-  box-shadow: 0 0 1px 2px rgba(0,0,0,.4);
+  /* box-shadow: 0 0 1px 2px rgba(0,0,0,.4); */
+  border: solid rgb(245, 243, 243);
   border-radius: 1em;
+  object-fit: cover;
+
 }
 
 .movieDetailData {
   text-align: center;
-}
-
-/* Beginning of reviews sections*/
-/* .reviewDiv {
-  display: flex;
-  flex-direction: column;
-  margin: 20px;
-} */
-.reviewDiv h2 {
-  right: 60%;
-}
-.reviewDiv, .formReview{
-  width: 60%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.formReview {
-  width: 100%;
-}
-.formReview textarea {
-  resize: none;
-  height: 80px;
 }
