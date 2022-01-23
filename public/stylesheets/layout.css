@@ -1,75 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Nunito+Sans:wght@600&display=swap');
+
 * {
     text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
+    letter-spacing: 1px;
 }
 
+html, body {
+  height: 100%;
+  position: relative;
+  overflow: auto;
+  background-color: rgb(20, 20, 20);
+}
+
+
 nav {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
     padding: 15px;
-    margin: 0;
+    /* margin: 0; */
     background-color: black;
     color: white;
-    height: 50px;
-    position: sticky;
-    top: 0;
+    /* height: 10%; */
+    /* position: sticky; */
+    /* top: 0; */
     margin-bottom: 50px;
+    z-index: 7;
 }
 
 .logo {
-  font-weight: bold;
   font-size: 20px;
+  font-family: 'Anton', sans-serif;
 }
 .logo:hover {
-  color: rgb(197, 194, 194);
+  color: #86868B;
 }
 
 .myLists:hover {
-  color: rgb(197, 194, 194);
+  color: #86868B;
 }
 
 .signOut:hover {
-  color: rgb(197, 194, 194);
+  color: #86868B;
 }
 
 .signIn:hover {
-  color: rgb(197, 194, 194);
+  color: #86868B;
 }
 
 .signUp:hover {
-  color: rgb(197, 194, 194);
+  color: #86868B;
 }
 
 .details:hover {
-  color: rgb(197, 194, 194);
+  color: #86868B;
 }
 
 .movies:hover {
-  color: rgb(197, 194, 194);
+  color: #86868B;
 }
 
 .topRight {
   float: right;
-  }
+}
 
 .topRight a {
   padding: 0 5px;
-  }
+}
 
-
-  footer {
-    background-color: black;
+  .pageContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    justify-content: space-between;
   }
 
-  .footer {
-    margin: 100px 0 0 0;
-    background-color: black;
+footer {
+    width: 100%;
+    position: relative;
+    /* margin: 100px 0 0 0; */
+    background-color: white;
     display: flex;
     justify-content: center;
-    align-items: center;
-  }
+    align-items: space-evenly;
+    min-height: 10%;
+    background-color: rgb(29, 29, 31);
+    bottom: 0;
+}
 
-  .footer a {
+.details, .movies {
     color: white;
-    height: 200px;
-    padding: 85px 20px 30px 20px;
-  }
+    /* height: 50px; */
+    align-self: center;
+    justify-self: center;
+    /* padding-top: 50%; */
+    padding-left: 60px;
+}

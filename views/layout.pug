@@ -1,26 +1,28 @@
 doctype html
 html
   head
-      block head
-        title= title
-        link(rel='stylesheet' href='/stylesheets/reset.css')
-        link(rel='stylesheet' href='/stylesheets/layout.css')
-        link(rel="shortcut icon" type="image/x-icon" href='/stylesheets/favicon.ico')
+    block head
+      title= title
+      link(rel='stylesheet' href='/stylesheets/reset.css')
+      link(rel='stylesheet' href='/stylesheets/layout.css')
+      link(rel="shortcut icon" type="image/x-icon" href='/stylesheets/favicon.ico')
+
 
   body
-    nav
-      a.logo(href='/') CinemAddict
-      div.topRight
-        if locals.authenticated
-          a.myLists(href='/my-lists') My Lists
-          a.signOut(href='/users/signout') Sign Out
-        else
-          a.signIn(href='/users/signin') Sign In
-          a.signUp(href='/users/signup') Sign Up
+    div.pageContainer
+      nav
+        a.logo(href='/') CinemAddict
+        div.topRight
+          if locals.authenticated
+            a.myLists(href='/my-lists') My Lists
+            a.signOut(href='/users/signout') Sign Out
+          else
+            a.signIn(href='/users/signin') Sign In
+            a.signUp(href='/users/signup') Sign Up
 
-    block content
+      block content
 
-  footer
-  div.footer
-      a.details(href="https://github.com/Joan-Buck/MovieApp") Details
-      a.movies(href="/") Movies
+      footer
+        //- div.footer
+        a.details(href="https://github.com/Joan-Buck/MovieApp") Details
+        a.movies(href="/") Movies

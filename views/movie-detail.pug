@@ -6,50 +6,48 @@ append head
     link(rel="stylesheet" href="/stylesheets/movie-detail.css")
 
 block content
-    div.movieDetail
-        div.mainInfo
-            h2= movie.title
-            img(src= movie.imageLink)
-        div.movieDetailInfo
-            div.movieDetailData
-                div.descContain
+    div.background
+        div.movieDetail
+            div.mainInfo
+                h2= movie.title
+                img(src= movie.imageLink)
+            div.movieDetailInfo
+                div.movieDetailData
                     p= movie.movieRating
-                div.descContain
                     p= movie.year
-                div.descContain
                     p= movie.Genre.name
-                div.descContain
                     p= movie.duration
-                div.customText
                     p= movie.plot
-                if locals.authenticated
-                    div.alignedCards
-                        button.listSubmission
+                    if locals.authenticated
+                        button
                             a(href=`/my-lists/add-movie/${movie.id}`) Add to My List
-    div.reviewBackground
-        div.reviewDiv
-            h2 Reviews
-            div.errorsDiv
-                if errors
-                    p The following error(s) occurred:
-                    ul.errors
-                        each errors in error
-                            li= error
-            if locals.authenticated && !userHasReview
-                form( action=`/movies/${movie.id}/addReview`, method="post" class='formReview' id=`${movie.id}`)
-                    input(type="hidden", name="_csrf" value=csrfToken)
-                    label(for='title') Your Review:
-                    input(type="text" name="title" placeholder='Write your title here')
-                    textarea(name="content" placeholder='Write your review here')
-                    button(class='reviewSubmitButton') Submit Review
-            div.reviews
-                each review in reviews
-                    div.reviewCard(id=`reviewCard_${review.id}`)
-                        p.username= review.User.username
-                        p= review.title
-                        p= review.content
-                        if locals.authenticated
-                            if locals.user.id === review.userId
-                                div
-                                    form(action=`/movies/reviews/${review.id}/delete`, method="post" class='deleteForm' id=`review_${review.id}`)
-                                        button(type='submit' class='deleteReviewButton' value= `${review.id}`) Delete
+        div.reviewBackground
+            div.reviewDiv
+                h2 Reviews
+                div.errorsDiv
+                    if errors
+                        p The following error(s) occurred:
+                        ul.errors
+                            each errors in error
+                                li= error
+                if locals.authenticated && !userHasReview
+                    form( action=`/movies/${movie.id}/addReview`, method="post" class='formReview' id=`${movie.id}`)
+                        input(type="hidden", name="_csrf" value=csrfToken)
+                        label(for='title') Your Review:
+                        input(type="text" name="title" placeholder='Write your title here')
+                        textarea(name="content" placeholder='Write your review here')
+                        button(class='reviewSubmitButton') Submit Review
+                div.reviews
+                    each review in reviews
+                        div.reviewCard(id=`reviewCard_${review.id}`)
+                            div.username
+                                img(src='https://avatarfiles.alphacoders.com/123/thumb-123713.jpg')
+                                p= review.User.username
+                            p(class='title')= review.title
+                            p= review.content
+                            if locals.authenticated
+                                if locals.user.id === review.userId
+                                    div
+                                        form(action=`/movies/reviews/${review.id}/delete`, method="post" class='deleteForm' id=`review_${review.id}`)
+                                            button(type='submit' class='deleteReviewButton' value= `${review.id}`) Delete
+

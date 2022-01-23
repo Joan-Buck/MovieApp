@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:ital,wght@0,300;0,700;1,900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:ital,wght@0,300;0,700;1,900&display=swap'); */
 .main {
   display: flex;
   flex-direction: column;
@@ -83,9 +83,9 @@ hr {
   font-size: 50px;
   top: -20px;
   left: 30px;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Nunito Sans', sans-serif;
   font-weight: bold;
-  font-style: italic;
+  /* font-style: italic; */
   background-color: white;
   padding: 0 10 0 10;
   letter-spacing: 1px;
@@ -97,9 +97,9 @@ hr {
   font-size: 50px;
   top: -30px;
   left: 30px;
-  font-family: 'Playfair Display', serif;
-    font-weight: bold;
-  font-style: italic;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: bold;
+  /* font-style: italic; */
   background-color: white;
   padding: 0 10px 0 10px;
   letter-spacing: 3px;
