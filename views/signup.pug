@@ -1,20 +1,25 @@
 extends layout
 
+append head
+   link(rel="stylesheet" href="/stylesheets/signup.css")
+
 block content
-    if errors
-        p The following error(s) occurred:
-        ul.errors
-            each error in errors
-                li=  error
-    form(action="/users/signup", method="post" )
-        input(type="hidden" name="_csrf" value=csrfToken)
-        label(for="username") Username:
-        input(type="text" name="username" value=user.username)
-        label(for="email") Email:
-        input(type="email" name="email" value=user.email)
-        label(for="password") Password:
-        input(type="password" name="password")
-        label(for="confirmPassword") Confirm Password:
-        input(type="password" name="confirmPassword")
-        button(type="submit") Sign Up
-        a(href="/users/signin") Already have an account?
+    div.main
+        if errors
+            div.errors
+                p.errorsTitle The following error(s) occurred:
+                ul.errorsList
+                    each error in errors
+                        li=  error
+        form(action="/users/signup", method="post" )
+            input(type="hidden" name="_csrf" value=csrfToken)
+            label(for="username") Username:
+            input(type="text" name="username" value=user.username)
+            label(for="email") Email:
+            input(type="email" name="email" value=user.email)
+            label(for="password") Password:
+            input(type="password" name="password")
+            label(for="confirmPassword") Confirm Password:
+            input(type="password" name="confirmPassword")
+            button.signUpUser(type="submit") Sign Up
+            a.signInUser(href="/users/signin") Already have an account?

@@ -9,14 +9,18 @@ html
 
   body
     nav
-      a(href='/') CinemAddict
+      a.logo(href='/') CinemAddict
       div.topRight
         if locals.authenticated
-          a(href='/my-lists') My Lists
-          a(href='/users/signout') Sign Out
+          a.myLists(href='/my-lists') My Lists
+          a.signOut(href='/users/signout') Sign Out
         else
-          a(href='/users/signin') Sign In
-          a(href='/users/signup') Sign Up
-
+          a.signIn(href='/users/signin') Sign In
+          a.signUp(href='/users/signup') Sign Up
 
     block content
+
+  footer
+  div.footer
+      a.details(href="https://github.com/Joan-Buck/MovieApp") Details
+      a.movies(href="/") Movies
