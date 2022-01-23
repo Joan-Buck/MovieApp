@@ -95,7 +95,8 @@ router.post('/signup', csrfProtection, signupValidator, asyncHandler(async (req,
     user.hashedPassword = hashedPassword;
     await user.save();
     signInUser(req, res, user);
-    res.redirect('/');
+    // res.redirect('/'); - commented out
+    return req.session.save(() => {res.redirect('/')})
   } else {
     const errors = validatorErrors.array().map((error) => error.msg)
     res.render('signup', {
@@ -145,7 +146,8 @@ router.post('/signin', csrfProtection, signinValidator, asyncHandler(async (req,
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
       if (passwordMatch) {
         signInUser(req, res, user)
-        return res.redirect('/')
+        return req.session.save(() => {res.redirect('/')})
+        // return res.redirect('/')
       }
     }
     errors.push('Signin failed for the provided email address and password.')
@@ -162,14 +164,16 @@ router.post('/signin', csrfProtection, signinValidator, asyncHandler(async (req,
 
 router.get('/signout', (req, res) => {
   signOutUser(req, res);
-  res.redirect('/users/signin');
+  // res.redirect('/users/signin');
+  return req.session.save(() => {res.redirect('/users/signin')})
 });
 
 router.get('/signin/demo', asyncHandler(async (req, res, next) => {
   try {
     const user = await db.User.findOne({ where: { email: 'demo@demo.com' } });
     signInUser(req, res, user);
-    res.redirect('/');
+    // res.redirect('/');
+    return req.session.save(() => {res.redirect('/')})
   }
   catch (error) {
     next(error);
