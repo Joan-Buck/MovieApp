@@ -1,5 +1,7 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:ital,wght@0,300;0,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Beastly&display=swap');
+
 
 .main {
   display: flex;
@@ -197,4 +199,44 @@ background-color: black;
   position: static;
   filter: grayscale(100%);
   font-style: italic;
+  /* box-shadow: 0 0 3px 1px black; */
+  transform: scale(1.05);
+  transition: 400ms;
 }
+
+/*
+.divider {
+  z-index: 0;
+  position: relative;
+  top: 3px;
+}
+
+.dividerText {
+  position: absolute;
+  z-index: 6;
+  font-size: 50px;
+  top: -20px;
+  left: 30px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: bold;
+  /* font-style: italic; */
+  background-color: white;
+  padding: 0 10 0 10;
+  letter-spacing: 1px;
+}
+
+.dividerTextMovies {
+  position: absolute;
+  z-index: 6;
+  font-size: 50px;
+  top: -30px;
+  left: 30px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: bold;
+  /* font-style: italic; */
+  background-color: white;
+  padding: 0 10px 0 10px;
+  letter-spacing: 3px;
+
+}
+*/

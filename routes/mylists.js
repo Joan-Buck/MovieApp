@@ -33,7 +33,7 @@ router.get('/add-movie/:movieId', asyncHandler(async (req, res) => {
             },
             userId: req.session.auth.userId
         },
-        order: [['createdAt', 'DESC']],
+        order: [['createdAt', 'ASC']],
         include: db.User
     })
 
@@ -86,7 +86,7 @@ router.get('/', csrfProtection, asyncHandler(async (req, res) => {
             },
             userId: req.session.auth.userId
         },
-        order: [['createdAt', 'DESC']],
+        order: [['createdAt', 'ASC']],
         include: db.User
     })
 

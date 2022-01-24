@@ -1,13 +1,33 @@
-/* .reviewBackground {
+* {
+/*
   background-image: url(https://preview.redd.it/4fxxbm4opjd31.jpg?auto=webp&s=f5b7d62076600a978d290a5e87f13140c47f5cd0);
-} */
-
+*/
+    /* background-color: rgb(20, 20, 20) */
+}
+button {
+    border: none;
+    background: black;
+    color: white;
+    border-radius: 15px;
+    height: 3em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+button:hover {
+    background: white;
+    color: black;
+}
+h2 {
+    text-align: center;
+}
 .reviewDiv {
     /* background: gray; */
     width: 60%;
     border-left: 1px solid black;
     border-right: 1px solid black;
     padding: 1em;
+    background: rgb(245, 243, 243);
+    border-radius: 15px;
 }
 
 .reviewDiv h2 {
@@ -27,6 +47,7 @@
 .formReview {
     width: 100%;
     display: flex;
+    background: white
 }
 
 .formReview input {
@@ -59,12 +80,85 @@ div.reviews {
 
 }
 
-div.reviewCard {}
+div.reviewCard {
+    padding: 2em;
+    background: white;
+    border-radius: 15px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
 
-div.reviewCard .username {
-    padding-bottom: 1em;
+.username {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    border-bottom: black 1px solid;
+    font-weight: 700;
+}
+.username img {
+    height: 2em;
+    border-radius: 50%;
+}
+
+p.title {
+    font-weight: bold;
+    margin-bottom: 2em;
 }
 
 div.reviewCard button {
-    color: red;
+
+}
+
+/* errors */
+.errorsDiv {
+
+}
+
+/* dark mode */
+
+input, textarea {
+    background: white;
+}
+.movieDetailInfo {
+    background:rgb(20, 20, 20);
+}
+div.reviewDiv h2 {
+    color: white;
+}
+.reviewDiv {
+    background: rgb(20, 20, 20);
+    box-shadow: 0 2px 5px 0 white;
+
+}
+.formReview {
+    background: black;
+    padding: 2em;
+    border-radius: 15px;
+    color: white;
+    margin-bottom: 2em;
+    box-shadow: 0 2px 5px 0 white;
+}
+.reviewSubmitButton:hover {
+    background: rgb(20, 20, 20);
+    box-shadow: 0 2px 5px 0 white;
+}
+div.reviewCard {
+    background: rgb(245, 243, 243);
+}
+.deleteReviewButton {
+    background: black;
+    color: white;
+}
+.deleteReviewButton:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 2px 5px 0 black;
+}
+
+.reviewSubmitButton:hover {
+    transform: scale(1.05);
+    filter: grayscale(100%);
+    cursor: pointer;
+    font-weight: bold;
+    transition: 300ms;
 }

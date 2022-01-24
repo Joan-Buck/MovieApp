@@ -12,6 +12,8 @@ block content
     //-             each error in errors
     //-                 li=  error
     div.form
+        div.container
+            h2 List name
         form(action="/my-lists" method="post")
 
             input(type="hidden", name="_csrf" value=csrfToken)
@@ -19,6 +21,9 @@ block content
                 ul.errors
                     each error in errors
                         p(class='error')=  error
+                input(type="text" name="name" class='inputError' placeholder="Name your new list here" value=name)
+                button(class='listNameButton') Create New List
 
-            input(type="text" name="name" placeholder="Name your new list here" value=name)
-            button(class='listNameButton') Create New List
+            else
+                input(type="text" name="name" placeholder="Name your new list here" value=name)
+                button(class='listNameButton') Create New List

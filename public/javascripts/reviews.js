@@ -73,6 +73,7 @@ window.addEventListener('load', e => {
                                     }
                                 })
                         });
+                        document.getElementsByClassName(reviewDiv).style.backgroundColor = coral;
                     }
                 })
 
@@ -212,10 +213,11 @@ window.addEventListener('load', e => {
                                         });
                                     }
                                 })
-                            
+
                         })
                     }
                 })
         })
+
     }
 })

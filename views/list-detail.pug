@@ -6,7 +6,7 @@ append head
 block content
     .main
 
-        .titleDiv   
+        .titleDiv
             h2= myList.name
             .buttons
                 button(type="submit").buttonCSS
@@ -17,7 +17,7 @@ block content
             each movie in myList.Movies
                 div.movieCard
                     a(href=`/movies/${movie.id}` target="_blank")
-                        img(src= movie.imageLink)    
+                        img(src= movie.imageLink)
                     p= movie.title
                     form(action=`/my-lists/${myList.id}/movies/${movie.id}`, method="post")
                         button(type='submit').removeButton Remove From List
