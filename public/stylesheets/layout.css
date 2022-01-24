@@ -1,10 +1,5 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rubik+Beastly&family=Sedgwick+Ave&display=swap');
-* {
-    text-decoration: none;
-}
-
- /*
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Nunito+Sans:wght@600&display=swap');
 
@@ -14,6 +9,16 @@
     letter-spacing: 1px;
 }
 
+ /*
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Nunito+Sans:wght@600&display=swap');
+
+* {
+    text-decoration: none;
+
+}
+
+*/
+
 html, body {
   height: 100%;
   position: relative;
@@ -21,13 +26,10 @@ html, body {
   background-color: rgb(20, 20, 20);
 
 }
-*/
-
 
 nav {
     display: flex;
     justify-content: space-between;
-
     align-items: center;    
     background-color: black;
     color: white;
@@ -35,15 +37,15 @@ nav {
     position: sticky;
     top: 0;
     z-index: 4;
-    padding: 15px 25px 15px 60px;
+    padding: 30px 25px 15px 60px;
   }
 
   .myLists, .signOut, .demoUser {
     font-family: 'Bebas Neue', cursive;
     letter-spacing: 2px;
     font-size: 18px;
-
   }
+
 .empty {
   display: flex;
 }
@@ -56,53 +58,12 @@ nav {
 }
 
 .logo {
-  font-family: 'Rubik Beastly', cursive;
-  /* font-family: 'Sedgwick Ave', cursive; */
-    color: #0e3742;
-  /* color: palegoldenrod; */
+  color: white;
   position:relative; 
+  font-family: 'Anton', sans-serif;
   font-size: 3em; 
   letter-spacing: 2px; 
-  center; -webkit-box-reflect: below .5px linear-gradient(transparent, #0008); 
-  line-height: 0.70em; 
-  outline: none;  
-  animation: neon 5s linear infinite;
-/*
-    align-content: center;
-    padding: 15px;
-    /* margin: 0; */
-    background-color: black;
-    color: white;
-    /* height: 10%; */
-    /* position: sticky; */
-    /* top: 0; */
-    margin-bottom: 50px;
-    z-index: 7;
-  */
 }
-/*
-.logo {
-  font-size: 20px;
-  font-family: 'Anton', sans-serif;
-
-}
-*/
-@keyframes neon {  
-  0%, 18%, 20%, 50%, 60%, 65.2%, 80%, 90.1%, 92% {
-    /* color: #0e3742;  */
-    color: palegoldenrod;
-    text-shadow: none;
-  }
-    18%, 20%, 30%, 50%, 60.2%, 80%, 90.1% {
-      color: #fff; 
-      text-shadow: 0 0 10px #03bcf4, 
-      0 0 20px #03bcf4, 
-      0 0 40px #03bcf4, 
-      0 0 80px #03bcf4,
-      0 0 160px #03bcf4;
-    } 
-}
-
 
 .logo:hover {
   color: #86868B;
@@ -111,10 +72,6 @@ nav {
 .myLists:hover {
 
   color: rgb(197, 194, 194);
-
-/*
-  color: #86868B;
-*/
 }
 
 .signOut:hover {
@@ -145,7 +102,7 @@ nav {
   padding: 0 5px;
 }
 
-  .pageContainer {
+.pageContainer {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -155,15 +112,9 @@ nav {
 
 
   .footer {
-    /* margin: 100px 0 0 0; */
     background-color: rgb(29, 29, 31);
-
-/*footer {
     width: 100%;
     position: relative;
-    /* margin: 100px 0 0 0; */
-    background-color: white;
-*/
     display: flex;
     justify-content: center;
     align-items: space-evenly;
@@ -174,19 +125,12 @@ nav {
 
 .details, .movies {
     color: white;
-
+    align-self: center;
+    justify-self: center;
+    padding-left: 60px;
     font-family: 'Bebas Neue', cursive;
     letter-spacing: 2px;
     font-size: 18px;
-    height: 200px;
-    padding: 85px 20px 30px 20px;
+    /* height: 200px; */
+    /* padding: 85px 20px 30px 20px; /*/
   }
-   
-/*
-    /* height: 50px; */
-    align-self: center;
-    justify-self: center;
-    /* padding-top: 50%; */
-    padding-left: 60px;
-}
-*/
