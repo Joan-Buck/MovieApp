@@ -7,28 +7,27 @@ append head
 
 block content
   
-  h1= Movies
-  if locals.authenticated
-    p Welcome, #{locals.user.username}!
+ 
   .main 
-    .divider 
-        //- hr
-        div.dividerTextDiv
-          h2.dividerText RELEASING SOON
-    div.releasingSoon
-      each movie in movies
-        if movie.year === 2022 || movie.year === 2020
+    .topDiv
+      div.animations
+        p.test {
+        p.test2 }
+      div.editorsPick
+        div
+          h2 Editor's Pick
+        div.topMoviesDiv
+          each movie in movies
+            if movie.year === 2022 || movie.year === 2020
+              div.movieCard.topMovies
+                a(href=`/movies/${movie.id}`).releasingSoonATag
+                  img(src= movie.imageLink)
+                  p.releasingSoonMovieTitle= movie.title
+    .bottomDiv
+      h2 Movies
+      div.moviesDiv
+        each movie in movies
           div.movieCard
-            a(href=`/movies/${movie.id}`).releasingSoonATag
+            a(href=`/movies/${movie.id}`)
               img(src= movie.imageLink)
-              p.releasingSoonMovieTitle= movie.title
-    .divider 
-      hr
-      div.dividerTextDiv
-        h2.dividerText.dividerTextMovies MOVIES
-    div.moviesDiv
-      each movie in movies
-        div.movieCard
-          a(href=`/movies/${movie.id}`)
-            img(src= movie.imageLink)
-            p= movie.title
+              p= movie.title

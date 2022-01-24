@@ -9,16 +9,34 @@ html
 
 
   body
-    div.pageContainer
-      nav
-        a.logo(href='/') CinemAddict
-        div.topRight
-          if locals.authenticated
-            a.myLists(href='/my-lists') My Lists
-            a.signOut(href='/users/signout') Sign Out
-          else
-            a.signIn(href='/users/signin') Sign In
-            a.signUp(href='/users/signup') Sign Up
+
+    nav
+      div.empty
+        if locals.authenticated
+          img(src="https://beautyhubaustralia.com.au/lash-brow/wp-content/uploads/sites/2/2021/03/Female-avatar-1.png").profilePic
+          a(href="https://github.com/Joan-Buck/MovieApp" target="_blank")
+            p.demoUser #{locals.user.username}
+      a.logo(href='/') cinemaddict
+      div.topRight
+        if locals.authenticated
+          a.myLists(href='/my-lists') MY LISTS
+          a.signOut(href='/users/signout') SIGN OUT 
+        else
+          a.signIn(href='/users/signin') SIGN IN
+          a.signUp(href='/users/signup') SIGN UP
+        
+
+    //- div.pageContainer
+     //-  nav
+      //-   a.logo(href='/') CinemAddict
+      //-   div.topRight
+        //-   if locals.authenticated
+         //-    a.myLists(href='/my-lists') My Lists
+         //-    a.signOut(href='/users/signout') Sign Out
+         //-  else
+          //-   a.signIn(href='/users/signin') Sign In
+          //-   a.signUp(href='/users/signup') Sign Up
+
 
       block content
 
