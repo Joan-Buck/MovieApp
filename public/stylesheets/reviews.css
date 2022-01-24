@@ -23,8 +23,9 @@ h2 {
 .reviewDiv {
     /* background: gray; */
     width: 60%;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+    margin: 4em auto;
+    /* border-left: 1px solid black; */
+    /* border-right: 1px solid black; */
     padding: 1em;
     background: rgb(245, 243, 243);
     border-radius: 15px;
@@ -38,7 +39,7 @@ h2 {
 
 .reviewDiv, .formReview {
     width: 60%;
-    margin: auto;
+    /* margin: auto; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -53,7 +54,7 @@ h2 {
 .formReview input {
     border-radius: 1em;
     height: 3em;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin-bottom: 1em;
 }
 
@@ -105,29 +106,19 @@ p.title {
     margin-bottom: 2em;
 }
 
-div.reviewCard button {
-
-}
-
-/* errors */
-.errorsDiv {
-
-}
 
 /* dark mode */
 
 input, textarea {
     background: white;
 }
-.movieDetailInfo {
-    background:rgb(20, 20, 20);
-}
+
 div.reviewDiv h2 {
     color: white;
 }
 .reviewDiv {
     background: rgb(20, 20, 20);
-    box-shadow: 0 2px 5px 0 white;
+    /* box-shadow: 0 2px 5px 0 white; */
 
 }
 .formReview {
@@ -136,7 +127,7 @@ div.reviewDiv h2 {
     border-radius: 15px;
     color: white;
     margin-bottom: 2em;
-    box-shadow: 0 2px 5px 0 white;
+    /* box-shadow: 0 2px 5px 0 white; */
 }
 .reviewSubmitButton:hover {
     background: rgb(20, 20, 20);

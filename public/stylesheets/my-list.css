@@ -12,7 +12,7 @@ html, body {
     width: 80%;
     flex-wrap: wrap;
     align-content: center;
-    justify-content: space-evenly;;
+    justify-content: space-evenly;
 }
 .listContainer img {
     position: relative;
@@ -68,7 +68,7 @@ html, body {
 h2 {
     position: relative;
     font-size: 40px;
-    font-family: 'Playfair Display', serif;
+    /* font-family: 'Playfair Display', serif; */
     font-weight: bold;
     font-style: italic;
     background-color: black;

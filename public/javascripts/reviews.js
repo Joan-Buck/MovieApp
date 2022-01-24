@@ -29,12 +29,18 @@ window.addEventListener('load', e => {
                         reviewCard.setAttribute('id', `reviewCard_${data.review}`)
                         reviewCard.setAttribute('class', 'reviewCard');
 
+                        const usernameDiv = document.createElement('div');
+                        usernameDiv.setAttribute('class', 'username');
+                        const usernameImage = document.createElement('img');
+                        usernameImage.setAttribute('src', 'https://avatarfiles.alphacoders.com/123/thumb-123713.jpg');
                         const reviewUsername = document.createElement('p');
                         reviewUsername.innerText = data.username;
                         const reviewTitle = document.createElement('p');
+                        reviewTitle.setAttribute('class', 'title');
                         reviewTitle.innerText = title;
                         const reviewContent = document.createElement('p');
                         reviewContent.innerText = content;
+
 
 
                         let deleteForm = document.createElement('form');
@@ -44,12 +50,14 @@ window.addEventListener('load', e => {
                         deleteForm.setAttribute('id', `review_${data.review}`);
 
                         let deleteButton = document.createElement('button');
+                        deleteButton.setAttribute('class', 'deleteReviewButton');
                         deleteButton.innerText = 'Delete';
                         deleteButton.setAttribute('value', `${data.review}`);
 
 
                         deleteForm.appendChild(deleteButton);
-                        reviewCard.append(reviewUsername, reviewTitle, reviewContent, deleteForm);
+                        usernameDiv.append(usernameImage, reviewUsername)
+                        reviewCard.append(usernameDiv, reviewTitle, reviewContent, deleteForm);
                         reviewsDiv.prepend(reviewCard);
 
 
@@ -57,7 +65,6 @@ window.addEventListener('load', e => {
                             e.preventDefault();
                             e.stopPropagation();
 
-                            // review_${:id}
                             const reviewId = (e.target.value)
                             console.log(reviewId)
 
@@ -69,11 +76,10 @@ window.addEventListener('load', e => {
                                     if (data.message === 'Success') {
                                         const review = document.querySelector(`#reviewCard_${reviewId}`);
                                         review.remove();
-                                        reviewForm.style.display = 'block';
+                                        reviewForm.style.display = 'flex';
                                     }
                                 })
                         });
-                        document.getElementsByClassName(reviewDiv).style.backgroundColor = coral;
                     }
                 })
 

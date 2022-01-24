@@ -16,7 +16,8 @@ html
           img(src="https://beautyhubaustralia.com.au/lash-brow/wp-content/uploads/sites/2/2021/03/Female-avatar-1.png").profilePic
           a(href="https://github.com/Joan-Buck/MovieApp" target="_blank")
             p.demoUser #{locals.user.username}
-      a.logo(href='/') cinemaddict
+      div.logoDiv
+        a.logo(href='/') cinemaddict
       div.topRight
         if locals.authenticated
           a.myLists(href='/my-lists') MY LISTS

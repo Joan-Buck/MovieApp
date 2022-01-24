@@ -1,8 +1,4 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:ital,wght@0,300;0,700;1,900&display=swap');
-body {
-    background-color: black;
-}
 
 .listContainer {
     /* display: flex; */
@@ -14,12 +10,15 @@ body {
     /* justify-content: space-evenly; */
     display: flex;
     /* grid-template-columns: repeat(4, 1fr); */
-    margin: auto;
+    /* margin: 25px auto auto auto; */
     /* align-items: center; */
     width: 80%;
     flex-wrap: wrap;
-    align-content: center;
+    margin: 0 auto;
+    padding-top: 30px;
+    /* align-content: center; */
     justify-content: space-evenly;
+    align-items: space-evenly;
 }
 
 .listContainer img {
@@ -48,7 +47,7 @@ body {
 
 }
 
-p {
+.PButton > p {
     text-align: center;
     margin: 10px;
     font-weight: bolder;
@@ -86,10 +85,8 @@ form {
 
 .listTitle {
     position: relative;
-    font-size: 40px;
-    font-family: 'Playfair Display', serif;
+    font-size: 30px;
     font-weight: bold;
-    font-style: italic;
     background-color: black;
     color: white;
     padding: 0 10 0 10;
