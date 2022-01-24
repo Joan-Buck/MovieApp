@@ -1,18 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:ital,wght@0,300;0,700;1,900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:ital,wght@0,300;0,700;1,900&display=swap'); */
 
-* {
-  /* background-image: url(https://preview.redd.it/4fxxbm4opjd31.jpg?auto=webp&s=f5b7d62076600a978d290a5e87f13140c47f5cd0); */
-  /* background-color: rgb(20, 20, 20); */
-}
+
 .movieDetail {
-  margin: 4em auto;
+  /* margin: 4em auto; */
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5%;
   padding: 3em;
-  /* light mode */
-  background: rgb(245, 243, 243);
+  background: black;
 
 }
 .mainInfo {
@@ -22,23 +18,29 @@
   gap: 2em;
 }
 h2 {
-  font-size: 3vh;
-  font-weight: 900;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
 }
 
 .mainInfo img {
   width: 400px;
   height: 600px;
   box-shadow: 0 15px 15px 5px rgba(0,0,0,.4);
-  border: solid rgb(245, 243, 243);
+  /* border: solid rgb(245, 243, 243); */
   border-radius: 1em;
   object-fit: cover;
+  background: black;
+
 
 }
 
 .movieDetailData {
   text-align: center;
-  color: white
+  color: white;
+  background: black;
+
+  /* margin: -10px 10px 20px 25px; */
 }
 
 
@@ -46,12 +48,11 @@ h2 {
   border-radius: 1em;
   border: solid rgb(175, 171, 171);} */
 
-.mainInfo > h2 {
+/* .mainInfo > h2 {
   font-weight: bolder;
-  margin: -10px 10px 20px 25px;
-  font-family: 'Playfair Display', serif;
+font-family: 'Playfair Display', serif; 
   font-size: larger;
-}
+} */
 
 /* .descContain {
   border: solid lightgray;
@@ -69,24 +70,17 @@ h2 {
 
 /* dark mode: */
 .background {
-  /* background: #86868B; */
-  background: black;
+  background-color: black;
   height: 100%;
-  margin: 0;
+  /* margin: 0; */
 }
-.movieDetail {
-  background: rgb(20, 20, 20)
-}
+
 .mainInfo img {
   box-shadow: 0 15px 15px 5px rgba(255,255,255,.4);
 
 }
 input, textarea {
   background: white;
-}
-
-h2 {
-  color: white;
 }
 
 button {
@@ -99,3 +93,10 @@ button:hover {
   box-shadow: 0 2px 5px 0 white;
 }
 
+.movieDetailInfo {
+  background-color: black;
+}
+
+.reviewBackground {
+  padding-bottom: 60px;
+}

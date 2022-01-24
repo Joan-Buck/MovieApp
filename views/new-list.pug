@@ -13,9 +13,8 @@ block content
     //-                 li=  error
     div.form
         div.container
-            h2 List name
+            h2 Create a New List
         form(action="/my-lists" method="post")
-
             input(type="hidden", name="_csrf" value=csrfToken)
             if errors
                 ul.errors
