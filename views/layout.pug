@@ -9,7 +9,7 @@ html
 
 
   body
-
+    //- div.pageContainer
     nav
       div.empty
         if locals.authenticated
@@ -24,20 +24,8 @@ html
         else
           a.signIn(href='/users/signin') SIGN IN
           a.signUp(href='/users/signup') SIGN UP
-
     block content
-
-  footer
-    //- div.footer
-    a.details(href="https://github.com/Joan-Buck/MovieApp") Details
-    a.movies(href="/") Movies
+    //- footer
+    //-   a.details(href="https://github.com/Joan-Buck/MovieApp") Details
+    //-   a.movies(href="/") Movies
     //- div.pageContainer
-     //-  nav
-      //-   a.logo(href='/') CinemAddict
-      //-   div.topRight
-        //-   if locals.authenticated
-         //-    a.myLists(href='/my-lists') My Lists
-         //-    a.signOut(href='/users/signout') Sign Out
-         //-  else
-          //-   a.signIn(href='/users/signin') Sign In
-          //-   a.signUp(href='/users/signup') Sign Up
