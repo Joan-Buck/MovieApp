@@ -1,6 +1,29 @@
-# Express Project Skeleton
+# Cinemaddict
 
-Use this project skeleton as a starting point for structuring your app. Things to note
-* Sequelize configuration has not yet been added -- you will need to set that up yourself
-* You may find yourself wanting to use javascript -- js files can be added in `public/javascripts` and should be appended to the Pug templates as needed
-* CSS files can go in `public/stylesheets` and also will need to be added to Pug templates
+[What The Truck](https://movie-app-aa.herokuapp.com/) is a GoodReads clone for movie addicts. Users can browse movies, review movies, and organize movies into built-in and custom movie lists.
+
+
+## Features
+- Sign up as a new user, log in as a returning user, or log in as a demo user
+- Movies
+  - View all movies in the app's database
+
+- Reviews
+  - Create a review and rating for a movie
+  - Read all reviews for a movie
+  - Edit a review the current user created
+  - Delete a review the current user created 
+
+- Movie Lists
+  - Create a movie list and add movies to that list
+  - Delete a movie list and delete movies from that list
+
+
+## Technologies Used
+- Front End:
+  - Pug
+  - JavaScript
+- Back End:
+  - Express
+  - PostgreSQL
+  - Sequelize
